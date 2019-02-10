@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint ./src",
-    "eslint:fix":"eslint --fix ./src"
-
+    "eslint:fix": "eslint --fix ./src",
+    "dev": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,17 @@
   "bugs": {
     "url": "https://github.com/FACK1/M-A-Platform/issues"
   },
-  "homepage": "https://github.com/FACK1/M-A-Platform#readme"
+  "homepage": "https://github.com/FACK1/M-A-Platform#readme",
+  "dependencies": {
+    "env2": "^2.2.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.11",
+    "nodemon": "^1.18.10"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
 }
