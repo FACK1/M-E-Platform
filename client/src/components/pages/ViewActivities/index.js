@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./index.css";
-import CreateActivity from '../CreateActivity'
+import {Link} from 'react-router-dom'
+import Header from "../../Header";
+
 
 
 class ViewActivities extends Component {
@@ -8,7 +10,9 @@ class ViewActivities extends Component {
     return (
       <React.Fragment>
         <h1 className='title'> View Activities </h1>
-        <CreateActivity/>
+        <Header/>
+        <li><Link to="/CreateActivity">Add New Activity</Link></li>
+
       </React.Fragment>
     );
   }
