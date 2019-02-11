@@ -5,8 +5,9 @@ const controllers = require('./controllers');
 
 const router = express.Router();
 
-router.post('/addActivity', controllers.activity.add);
+router.post('/activities', controllers.activity.add);
 router.get('/activities', controllers.activity.findAll);
+
 
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
