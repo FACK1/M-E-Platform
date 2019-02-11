@@ -11,7 +11,7 @@ class ViewActivities extends Component {
       <React.Fragment>
         <h1 className='title'> View Activities </h1>
         <Header/>
-        <li><Link to="/CreateActivity">Add New Activity</Link></li>
+        <li><Link to="/CreateActivity">اضافة نشاط جديد</Link></li>
 
       </React.Fragment>
     );
