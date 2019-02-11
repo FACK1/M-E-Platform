@@ -1,21 +1,20 @@
 import React from 'react';
-import './index.css'
-import {Link} from 'react-router-dom'
-
+import "react-datepicker/dist/react-datepicker.css";
+import {StyledHeader, StyledUl, StyledLi,StyledLink} from './index.style'
 
 
 const Header = () =>{
     return (
-      <div>
-        <ul className="header">
-          <li><Link to="/ViewActivities">الأنشطة</Link></li>
-          <li><Link to="/Programs">البرامج</Link></li>
-          <li><Link to="/contact">المستخدمين</Link></li>
-        </ul>
-        <div className="content">
-
-        </div>
-      </div>
+      <StyledHeader>
+        <StyledUl className="header">
+          <StyledLi><StyledLink to="/ViewActivities">الأنشطة</StyledLink ></StyledLi>
+          <StyledLi><StyledLink  to="/Programs">البرامج</StyledLink ></StyledLi>
+          <StyledLi><StyledLink  to="/contact">المستخدمين</StyledLink ></StyledLi>
+          <StyledLi><StyledLink  to="/objectives">الأنشطة</StyledLink ></StyledLi>
+          <StyledLi><StyledLink  to="/Programs">البرامج</StyledLink ></StyledLi>
+          <StyledLi><StyledLink  to="/contact">المستخدمين</StyledLink ></StyledLi>
+        </StyledUl>
+      </StyledHeader>
     );
   }
 export default Header;
