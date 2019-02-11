@@ -18,7 +18,7 @@ const add = (req, res) => {
     });
 };
 
-const findALl = (req, res) => {
+const findAll = (req, res) => {
   Activity.find({})
     .populate('program')
     .populate('objective')
@@ -30,4 +30,4 @@ const findALl = (req, res) => {
       }
     });
 };
-module.exports = { add, findALl };
+module.exports = { add, findAll };
