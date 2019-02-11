@@ -1,6 +1,6 @@
-const Activity = require('../models/Activity.model');
+const Activity = require('../models/Activity');
 
-const store = (req, res) => {
+const add = (req, res) => {
   const {
     name, hours, startDate, endDate, trainerName, location, ProgramId, ObjectiveId,
   } = req.body;
@@ -10,10 +10,20 @@ const store = (req, res) => {
   });
   activity.save()
     .then(() => {
-      res.send({ state: true });
+      res.json({ success: true });
     }).catch((err) => {
-      res.send({ state: false, error: err.message });
+      res.json({ success: false, error: err.message });
     });
 };
 
-module.exports = { store };
+const index = (req, res) => {
+  const activity = new Activity();
+  activity.find({})
+    .populate('programId')
+    .populate('objectiveId')
+    .exec((err, activities) => {
+      console.log(activities);
+      res.send({ state: true });
+    });
+};
+module.exports = { add, index };
