@@ -16,14 +16,5 @@ const add = (req, res) => {
     });
 };
 
-const index = (req, res) => {
-  const activity = new Activity();
-  activity.find({})
-    .populate('programId')
-    .populate('objectiveId')
-    .exec((err, activities) => {
-      console.log(activities);
-      res.send({ state: true });
-    });
-};
-module.exports = { add, index };
+
+module.exports = { add };
