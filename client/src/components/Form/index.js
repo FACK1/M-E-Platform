@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import { Formik,} from "formik";
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import {Title, StyledForm, StyledField, StyledLabel, StyledInput} from './index.style'
+import { StyledForm, StyledField, StyledLabel, StyledContainer, StyledButton, StyledDatePicker} from './index.style'
 
 
 
@@ -32,11 +31,28 @@ render() {
   return(
 <Formik>
 <StyledForm>
-<Title>Hello</Title>
-<StyledInput>
-  <StyledLabel>اسم النشاط</StyledLabel>
-<StyledField type="text" name="ActivityName" placeholder="اسم النشاط"/>
-</StyledInput>
+<StyledContainer>
+    <StyledLabel>اسم النشاط</StyledLabel>
+  <StyledField type="text" name="ActivityName" placeholder="اسم النشاط"/>
+  <StyledLabel>
+  اختر الهدف
+    <StyledField component="select" name="selectObj">
+    <option value="obj1"> الهدف الاول</option>
+    <option value="obj2"> الهدف الثاني</option>
+    </StyledField>
+  </StyledLabel>
+  <StyledLabel>
+  التاريخ من
+  <StyledDatePicker placeholderText="اختر تاريخ"
+   selected={this.state.startDate}
+    onChange={this.handleStartDate}/>
+  </StyledLabel>
+  <StyledLabel>
+    اسم المدرب
+    <StyledField type="text" name="tranierName" placeholder="اسم المدرب"/>
+  </StyledLabel>
+  </StyledContainer>
+<StyledContainer>
 <StyledLabel>
 اختر البرنامج
 <StyledField component="select" name="selectProgram">
@@ -46,19 +62,15 @@ render() {
 </StyledField>
 </StyledLabel>
 <StyledLabel>
-اختر الهدف
-<StyledField component="select" name="selectObj">
-<option value="obj1"> الهدف الاول</option>
-<option value="obj2"> الهدف الثاني</option>
-</StyledField>
-</StyledLabel>
-<StyledLabel>
 عدد الساعات
 <StyledField type="text" name="NumOH" placeholder="عدد الساعات"/>
 </StyledLabel>
+
 <StyledLabel>
-اسم المدرب
-<StyledField type="text" name="tranierName" placeholder="اسم المدرب"/>
+الى
+<StyledDatePicker placeholderText="اختر تاريخ"
+selected={this.state.endDate}
+onChange={this.handleEndDate} />
 </StyledLabel>
 <StyledLabel>
 اختر المكان
@@ -67,19 +79,8 @@ render() {
 <option value="Place2"> بلدة</option>
 </StyledField>
 </StyledLabel>
-<StyledLabel>
-التاريخ من
-<DatePicker placeholderText="Click to select a date"
- selected={this.state.startDate}
-  onChange={this.handleStartDate}/>
-</StyledLabel>
-<StyledLabel>
-الى
-<DatePicker placeholderText="Click to select a date"
-selected={this.state.endDate}
-onChange={this.handleEndDate} />
-</StyledLabel>
-<button>انشاء</button>
+</StyledContainer>
+<StyledButton>انشاء</StyledButton>
 </StyledForm>
 </Formik>
 );

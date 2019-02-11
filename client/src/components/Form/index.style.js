@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field} from "formik";
+import DatePicker from 'react-datepicker';
 
 
 export const Title = styled.h1`
@@ -10,12 +11,7 @@ export const Title = styled.h1`
   `;
   export const StyledForm = styled(Form)`
   display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  background:blue;
-  position: absolute;
-  width: 70%;
-  margin: 0px 15% 0px 15%;
+
 
   `;
 
@@ -23,14 +19,36 @@ export const Title = styled.h1`
     height: 35px;
     border: 1px solid #ccc;
     background-color: #fff;
+    width: 200px;
+    height: 30px;
+    border-radius: 50px;
+
+    ::placeholder {
+      padding-right:27px;
+    }
+`;
 
 
-
-  `;
 export const StyledLabel = styled.label`
 width:49%;
 `;
 
-export const StyledInput = styled.div`
-width:30%;
+
+export const StyledContainer = styled.div`
+display:flex;
+flex-direction:column;
 `;
+export const StyledButton = styled.button`
+display:block;
+`;
+export const StyledDatePicker = styled(DatePicker)`
+height: 35px;
+border: 1px solid #ccc;
+background-color: #fff;
+width: 200px;
+height: 30px;
+border-radius: 50px;
+::placeholder {
+  padding-right:27px;
+}`
+;

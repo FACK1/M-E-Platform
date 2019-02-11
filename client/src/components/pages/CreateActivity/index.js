@@ -10,7 +10,7 @@ class CreateActivity extends Component {
     return (
       <React.Fragment>
         <Header/>
-        <h1 className='title'> Create Activity </h1>
+        <h1 className='title'>  انشئ نشاطا جديداً </h1>
         <MainForm />
         </React.Fragment>
     );
