@@ -9,8 +9,8 @@ const ActivitySchema = mongoose.Schema({
   endDate: Date,
   trainerName: String,
   location: String,
-  ProgramId: { type: Schema.Types.ObjectId, ref: 'Program' },
-  ObjectiveId: { type: Schema.Types.ObjectId, ref: 'Objective' },
+  program: { type: Schema.Types.ObjectId, ref: 'Program' },
+  objective: { type: Schema.Types.ObjectId, ref: 'Objective' },
 });
 
 module.exports = mongoose.model('Activity', ActivitySchema);
