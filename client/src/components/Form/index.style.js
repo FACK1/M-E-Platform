@@ -11,6 +11,13 @@ export const Title = styled.h1`
 `;
 export const StyledForm = styled(Form)`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top:80px;
+  margin-left:50px;
+  margin-buttom:100px;
+
 `;
 
 export const StyledField = styled(Field)`
@@ -20,6 +27,7 @@ export const StyledField = styled(Field)`
   width: 200px;
   height: 30px;
   border-radius: 50px;
+  border-color:#08A3C3;
 
   ::placeholder {
     padding-right: 27px;
@@ -35,7 +43,15 @@ export const StyledContainer = styled.div`
   flex-direction: column;
 `;
 export const StyledButton = styled.button`
-  display: block;
+border: 1px solid #ccc;
+width: 200px;
+height: 30px;
+border-radius: 50px;
+background-color:#08A3C3;
+text-align: center;
+color:white;
+margin-top:15px;
+margin-left:500px;
 `;
 export const StyledDatePicker = styled(DatePicker)`
   height: 35px;
@@ -44,6 +60,8 @@ export const StyledDatePicker = styled(DatePicker)`
   width: 200px;
   height: 30px;
   border-radius: 50px;
+  border-color:#08A3C3;
+
   ::placeholder {
     padding-right: 27px;
   }
