@@ -10,7 +10,7 @@ router.get('/activities', controllers.activity.findAll);
 
 
 router.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
 
