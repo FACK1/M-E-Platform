@@ -15,7 +15,9 @@ height:100vh;
 padding: 0;
 `;
 export const StyledBgLogo= styled.img`
-
+position:absolute;
+bottom:0;
+right:0;
 `;
 export const StyledLogo= styled.img`
 width:80%;
