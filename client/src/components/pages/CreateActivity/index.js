@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import "./index.css";
 import Header from "../../Header";
 import MainForm from '../../Form'
+import {Title} from "./index.style";
 
 class CreateActivity extends Component {
   render() {
     return (
       <React.Fragment>
         <Header/>
-        <h1 className='title'>  انشئ نشاطا جديداً </h1>
+        <Title>  انشئ نشاطا جديداً </Title>
         <MainForm />
         </React.Fragment>
     );

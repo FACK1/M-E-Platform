@@ -9,7 +9,7 @@ class ViewActivities extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1 className='title'> View Activities </h1>
+        <h1 className='title'> جميع الانشطة </h1>
         <Header/>
         <li><Link to="/CreateActivity">اضافة نشاط جديد</Link></li>
 
