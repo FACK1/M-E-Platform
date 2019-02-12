@@ -4,9 +4,6 @@ export const StyledHeader = styled.div`
 display: flex;
 flex-direction:column;
 width:20%;
-z-index: -1;
-top: 0;
-right: 0;
 position:fixed;
 float:right;
 background-image: linear-gradient(-180deg, rgba(25,179,212,1), rgba(255,255,255,0));
