@@ -3,8 +3,6 @@ import "./index.css";
 import Header from "../../Header";
 import MainForm from '../../Form'
 
-
-
 class CreateActivity extends Component {
   render() {
     return (
