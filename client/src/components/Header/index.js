@@ -1,23 +1,24 @@
-import React from "react";
-import "./index.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import "react-datepicker/dist/react-datepicker.css";
+import {StyledHeader, StyledUl, StyledLi,StyledLink,StyledBgLogo,StyledLogo,StyledButton} from './index.style'
+import bgLogo from '../../assets/background-YDRC-Logo.png';
+import logo from '../../assets/YDRC-Logo.png';
 
-const Header = () => {
-  return (
-    <div>
-      <ul className="header">
-        <li>
-          <Link to="/ViewActivities">الأنشطة</Link>
-        </li>
-        <li>
-          <Link to="/Programs">البرامج</Link>
-        </li>
-        <li>
-          <Link to="/contact">المستخدمين</Link>
-        </li>
-      </ul>
-      <div className="content" />
-    </div>
-  );
-};
+
+const Header = () =>{
+    return (
+      <StyledHeader>
+        <StyledLogo src={logo} />
+        <StyledUl className="header">
+            <StyledLi><StyledLink to="/ViewActivities">الأنشطة</StyledLink ></StyledLi>
+            <StyledLi><StyledLink  to="/Programs">البرامج</StyledLink ></StyledLi>
+            <StyledLi><StyledLink  to="/contact">المستخدمين</StyledLink ></StyledLi>
+            <StyledLi><StyledLink  to="/objectives">التقارير</StyledLink ></StyledLi>
+            <StyledLi><StyledLink  to="/Programs">الأهداف</StyledLink ></StyledLi>
+            <StyledLi><StyledButton>تسجيل الخروج</StyledButton></StyledLi>
+        </StyledUl>
+        <StyledBgLogo src={bgLogo}/>
+      </StyledHeader>
+    );
+  }
 export default Header;
