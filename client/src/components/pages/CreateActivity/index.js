@@ -11,12 +11,12 @@ class CreateActivity extends Component {
       {
         label: "اسم النشاط",
         type: "text",
-        name: "ActivityName",
+        name: "name",
         placeholder: "اسم النشاط",
       },
       {
         label: "اختر الهدف",
-        name: "selectObj",
+        name: "objective1",
         component: "select",
         type: "select",
         options: [
@@ -33,12 +33,12 @@ class CreateActivity extends Component {
       {
         label: "اسم المدرب",
         type: "text",
-        name: "tranierName",
+        name: "trainerName",
         placeholder: "اسم المدرب",
       },
       {
         label: "اختر البرنامج",
-        name: "selectProgram",
+        name: "program1",
         component: "select",
         type: "select",
         options: [
@@ -64,7 +64,7 @@ class CreateActivity extends Component {
       },
       {
         label: "اختر المكان",
-        name: "selectPlace",
+        name: "location",
         component: "select",
         type: "select",
         options: [
@@ -90,15 +90,12 @@ class CreateActivity extends Component {
         type: "datePicker",
         placeholderText: "اختر التاريخ",
       }
-
-
-
     ];
     return fields;
   }
 
-  submitAction(parameters) {
-    axios.post('/activities', parameters);
+  submitAction(values) {
+    axios.post('/activities', values);
   };
 
   render() {

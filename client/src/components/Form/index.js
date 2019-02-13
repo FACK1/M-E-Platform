@@ -14,7 +14,7 @@ import "./index.css";
 class MainForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {fieldsValues: {}};
+    this.state = {dateFieldsValues: {}};
     this.renderFields = this.renderFields.bind(this);
     this.updateState = this.updateState.bind(this);
   }
@@ -34,14 +34,13 @@ class MainForm extends Component {
               type={f.type}
               name={f.name}
               placeholder={f.placeholder}
-              onChange={event => {this.updateState(f.name, event.target.value)}}
             />
           </StyledLabel>;
 
         case 'select':
           return <StyledLabel>
             {f.label}
-            <StyledField component={f.component} name={f.name} onChange={event => {this.updateState(f.name, event.target.value)}}>
+            <StyledField component={f.component} name={f.name}>
               {MainForm.getSelectOptions(f.options)}
             </StyledField>
           </StyledLabel>;
@@ -51,7 +50,8 @@ class MainForm extends Component {
             {f.label}
             <StyledDatePicker
               placeholderText={f.placeholderText}
-              onChange={date => { this.updateState(f.name, date) }}
+              selected={this.state.dateFieldsValues[f.name] || Date.now()}
+              onChange={date => { this.updateState(f.name, date); this.state.dateFieldsValues[f.name] = date; }}
             />
           </StyledLabel>;
       }
@@ -60,22 +60,22 @@ class MainForm extends Component {
   }
 
   updateState(name, value) {
-    const newFieldValue = (this.state.fieldsValues);
+    const newFieldValue = (this.state.dateFieldsValues);
     newFieldValue[name] = value;
-    this.setState({fieldsValues: newFieldValue});
+    this.setState({dateFieldsValues: newFieldValue});
     console.log(this.state);
   }
 
   render() {
     return (
-      <Formik onSubmit={() => { console.log("Hello"); this.props.action(this.state.fieldsValues)}}>
+      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}>
         <StyledForm>
           {this.renderFields()}
           <Button/>
         </StyledForm>
       </Formik>
     );
-  }
+  };
 
 }
 
