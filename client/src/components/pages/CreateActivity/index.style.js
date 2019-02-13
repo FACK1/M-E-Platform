@@ -7,3 +7,7 @@ export const Title = styled.h1`
   font-size: 2.2em;
   text-align: center;
 `;
+
+export const StyledPage = styled.div`
+margin-right: 20%;
+`;
