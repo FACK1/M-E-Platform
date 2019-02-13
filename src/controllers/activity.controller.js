@@ -11,7 +11,6 @@ const add = (req, res) => {
   });
   activity.save()
     .then(() => {
-      console.log(req.body);
       res.json({ success: true });
     }).catch((err) => {
       res.json({ success: false, error: err.message });

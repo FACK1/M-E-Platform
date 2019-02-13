@@ -6,7 +6,7 @@ import {
   StyledForm,
   StyledField,
   StyledLabel,
-  StyledButton,
+  //StyledButton,
   StyledDatePicker,
 } from "./index.style";
 import "./index.css";
@@ -51,7 +51,11 @@ class MainForm extends Component {
             <StyledDatePicker
               placeholderText={f.placeholderText}
               selected={this.state.dateFieldsValues[f.name] || Date.now()}
-              onChange={date => { this.updateState(f.name, date); this.state.dateFieldsValues[f.name] = date; }}
+              onChange={date => { this.updateState(f.name, date);
+              const newDateFieldsValues = (this.state.dateFieldsValues);
+              newDateFieldsValues[f.name] = date;
+              this.setState({dateFieldsValues: newDateFieldsValues});
+              }}
             />
           </StyledLabel>;
       }
@@ -63,7 +67,7 @@ class MainForm extends Component {
     const newFieldValue = (this.state.dateFieldsValues);
     newFieldValue[name] = value;
     this.setState({dateFieldsValues: newFieldValue});
-    console.log(this.state);
+    //console.log(this.state);
   }
 
   render() {
@@ -75,7 +79,7 @@ class MainForm extends Component {
         </StyledForm>
       </Formik>
     );
-  };
+  }
 
 }
 

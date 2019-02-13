@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import Header from "../../Header";
 import MainForm from '../../Form'
 import {Title, StyledPage} from "./index.style";
-import axios from 'axios';
 
 class CreateActivity extends Component {
 
@@ -96,7 +96,7 @@ class CreateActivity extends Component {
 
   submitAction(values) {
     axios.post('/activities', values);
-  };
+  }
 
   render() {
     return (
