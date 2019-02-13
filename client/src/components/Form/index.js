@@ -65,7 +65,6 @@ class MainForm extends Component {
     const newFieldValue = (this.state.fieldsValues);
     newFieldValue[name] = value;
     this.setState({fieldsValues: newFieldValue});
-    console.log(this.state);
   }
 
 

@@ -94,7 +94,7 @@ class CreateActivity extends Component {
 
     ];
     return fields;
-  };
+  }
 
   render() {
     return (
