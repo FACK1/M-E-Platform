@@ -3,6 +3,9 @@ import { Form, Field } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 
+export const StyledContainerBtn=styled.div`
+margin-right:422px;
+`;
 export const Title = styled.h1`
   font-family: "Raleway", sans-serif;
   font-weight: 600;
@@ -65,6 +68,14 @@ margin-top:15px;
 margin-left:500px;
 `;
 /*export const StyledDatePicker = styled(DatePicker)`
+=======
+export const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const StyledDatePicker = styled(DatePicker)`
+>>>>>>> master
   height: 35px;
   border: 1px solid #ccc;
   background-color: #fff;

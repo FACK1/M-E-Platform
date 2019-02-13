@@ -15,6 +15,7 @@ padding: 0;
 export const StyledBgLogo= styled.img`
 position:absolute;
 bottom:0;
+width:30px;
 right:0;
 `;
 export const StyledLogo= styled.img`

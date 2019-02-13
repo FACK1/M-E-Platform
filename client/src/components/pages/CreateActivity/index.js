@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "../../Header";
 import MainForm from '../../Form'
 import {Title, StyledPage} from "./index.style";
+import axios from 'axios';
 
 class CreateActivity extends Component {
 
@@ -58,7 +59,7 @@ class CreateActivity extends Component {
       {
         label: "عدد الساعات",
         type: "text",
-        name: "NumOH",
+        name: "hours",
         placeholder: "عدد الساعات",
       },
       {
@@ -96,13 +97,17 @@ class CreateActivity extends Component {
     return fields;
   }
 
+  submitAction(parameters) {
+    axios.post('/activities', parameters);
+  };
+
   render() {
     return (
       <React.Fragment>
         <Header/>
         <StyledPage>
           <Title>  انشئ نشاطا جديداً </Title>
-          <MainForm fields={this.getFieldList()} />
+          <MainForm fields={this.getFieldList()} action={this.submitAction} />
         </StyledPage>
         </React.Fragment>
     );
