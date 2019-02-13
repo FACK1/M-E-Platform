@@ -25,9 +25,9 @@ padding: 0px 22px;
 `;
 export const StyledUl = styled.ul`
 margin-top:-50px;
+margin-right: 20%;
 list-style-type: none;
-width:100%;
-padding: 20%;
+width:80%;
 `;
 export const StyledLink = styled(Link)`
 display: block;
