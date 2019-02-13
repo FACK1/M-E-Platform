@@ -6,12 +6,13 @@ const add = (req, res) => {
   const {
     name, hours, startDate, endDate, trainerName, location, program, objective,
   } = req.body;
-
+console.log(name, hours, startDate, endDate, trainerName, location, program, objective);
   const activity = new Activity({
     name, hours, startDate, endDate, trainerName, location, program, objective,
   });
   activity.save()
     .then(() => {
+
       res.json({ success: true });
     }).catch((err) => {
       res.json({ success: false, error: err.message });
