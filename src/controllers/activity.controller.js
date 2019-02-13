@@ -6,7 +6,6 @@ const add = (req, res) => {
   const {
     name, hours, startDate, endDate, trainerName, location, program, objective,
   } = req.body;
-
   const activity = new Activity({
     name, hours, startDate, endDate, trainerName, location, program, objective,
   });

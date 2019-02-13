@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint ./src",
     "eslint:fix": "eslint --fix ./src",
-    "dev": "nodemon ./src/server.js",
+    "client": " cd client && npm run build",
+    "dev": " nodemon ./src/server.js && npm run client",
     "start": "node ./src/server.js"
   },
   "repository": {
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/FACK1/M-A-Platform#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "env2": "^2.2.2",
     "express": "^4.16.4",
