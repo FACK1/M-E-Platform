@@ -12,7 +12,6 @@ import "./index.css";
 class MainForm extends Component {
   constructor(props) {
     super(props);
-    this.props = props;
     this.state = {fieldsValues: {}};
     this.renderFields = this.renderFields.bind(this);
     this.updateState = this.updateState.bind(this);
@@ -25,9 +24,7 @@ class MainForm extends Component {
   }
 
   renderFields() {
-    let fieldsNames = [];
     const renderedFields = this.props.fields.map((f) => {
-      fieldsNames.push({[f.name]: null});
       switch (f.type) {
         case 'text':
           return <StyledLabel>{f.label}
@@ -65,12 +62,13 @@ class MainForm extends Component {
     const newFieldValue = (this.state.fieldsValues);
     newFieldValue[name] = value;
     this.setState({fieldsValues: newFieldValue});
+    console.log(this.state);
   }
 
 
   render() {
     return (
-      <Formik>
+      <Formik onSubmit={this.props.action}>
         <StyledForm>
           {this.renderFields()}
           <StyledButton>انشاء</StyledButton>
