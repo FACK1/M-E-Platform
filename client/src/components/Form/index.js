@@ -12,99 +12,68 @@ import "./index.css";
 class MainForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      startDate: "",
-      endDate: ""
-    };
+    this.props = props;
+    this.state = {fieldsValues: {}};
+    this.renderFields = this.renderFields.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
 
-  handleStartDate = date => {
-    this.setState({
-      startDate: date
+  static getSelectOptions(options) {
+    return options.map((o) => {
+      return <option value={o.value}> {o.label}</option>;
     });
-  };
-  handleEndDate = date => {
-    this.setState({
-      endDate: date
-    });
-  };
-
-
+  }
 
   renderFields() {
-    return this.props.fields.map((f) => {
+    let fieldsNames = [];
+    const renderedFields = this.props.fields.map((f) => {
+      fieldsNames.push({[f.name]: null});
+      switch (f.type) {
+        case 'text':
+          return <StyledLabel>{f.label}
+            <StyledField
+              type={f.type}
+              name={f.name}
+              placeholder={f.placeholder}
+              onChange={event => {this.updateState(f.name, event.target.value)}}
+            />
+          </StyledLabel>;
 
+        case 'select':
+          return <StyledLabel>
+            {f.label}
+            <StyledField component={f.component} name={f.name} onChange={event => {this.updateState(f.name, event.target.value)}}>
+              {MainForm.getSelectOptions(f.options)}
+            </StyledField>
+          </StyledLabel>;
+
+        case 'datePicker':
+          return <StyledLabel>
+            {f.label}
+            <StyledDatePicker
+              placeholderText={f.placeholderText}
+              onChange={date => { this.updateState(f.name, date.format()) }}
+            />
+          </StyledLabel>;
+      }
     });
-  };
+    //this.setState({fieldsValues: fieldsNames});
+    return renderedFields;
+  }
 
-
-
-
-
+  updateState(name, value) {
+    const newFieldValue = (this.state.fieldsValues);
+    newFieldValue[name] = value;
+    this.setState({fieldsValues: newFieldValue});
+    console.log(this.state);
+  }
 
 
   render() {
     return (
       <Formik>
         <StyledForm>
-            <StyledLabel>اسم النشاط
-            <StyledField
-              type="text"
-              name="ActivityName"
-              placeholder="اسم النشاط"
-            />
-            </StyledLabel>
-            <StyledLabel>
-              اختر الهدف
-              <StyledField component="select" name="selectObj">
-                <option value="obj1"> الهدف الاول</option>
-                <option value="obj2"> الهدف الثاني</option>
-              </StyledField>
-            </StyledLabel>
-            <StyledLabel>
-              التاريخ من
-              <StyledDatePicker
-                placeholderText="اختر تاريخ"
-                selected={this.state.startDate}
-                onChange={this.handleStartDate}
-              />
-            </StyledLabel>
-            <StyledLabel>
-              اسم المدرب
-              <StyledField
-                type="text"
-                name="tranierName"
-                placeholder="اسم المدرب"
-              />
-            </StyledLabel>
-            <StyledLabel>
-              اختر البرنامج
-              <StyledField component="select" name="selectProgram">
-                <option value="Program1"> البرنامج الاول</option>
-                <option value="Program2"> البرنامج الثاني</option>
-                <option value="Program3">البرنامج الثاني</option>
-              </StyledField>
-            </StyledLabel>
-            <StyledLabel>
-              عدد الساعات
-              <StyledField type="text" name="NumOH" placeholder="عدد الساعات" />
-            </StyledLabel>
-
-            <StyledLabel>
-              الى
-              <StyledDatePicker
-                placeholderText="اختر تاريخ"
-                selected={this.state.endDate}
-                onChange={this.handleEndDate}
-              />
-            </StyledLabel>
-            <StyledLabel>
-              اختر المكان
-              <StyledField component="select" name="selectPlace">
-                <option value="Place1"> مدينة</option>
-                <option value="Place2"> بلدة</option>
-              </StyledField>
-            </StyledLabel>
+          {this.renderFields()}
           <StyledButton>انشاء</StyledButton>
         </StyledForm>
       </Formik>
