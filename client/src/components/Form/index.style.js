@@ -11,20 +11,26 @@ export const Title = styled.h1`
 `;
 export const StyledForm = styled(Form)`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: columns;
   align-items: center;
   flex-wrap: wrap;
+  width: 50%;
   margin-top:80px;
   margin-left:50px;
   margin-buttom:100px;
-
 `;
+
+export const StyledLabel = styled.label`
+  width: 49%;
+`;
+
 
 export const StyledField = styled(Field)`
   height: 35px;
   border: 1px solid #ccc;
   background-color: #fff;
-  width: 200px;
+  width: 100%;
   height: 30px;
   border-radius: 50px;
   border-color:#08A3C3;
@@ -34,14 +40,19 @@ export const StyledField = styled(Field)`
   }
 `;
 
-export const StyledLabel = styled.label`
-  width: 49%;
+export const StyledDatePicker = styled(DatePicker)`
+  border: 1px solid #ccc;
+  background-color: #fff;
+  width: 100%;
+  height: 30px;
+  border-radius: 50px;
+  border-color:#08A3C3;
+  display: block;
+  ::placeholder {
+    padding-right: 27px;
+  }
 `;
 
-export const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 export const StyledButton = styled.button`
 border: 1px solid #ccc;
 width: 200px;
@@ -53,7 +64,7 @@ color:white;
 margin-top:15px;
 margin-left:500px;
 `;
-export const StyledDatePicker = styled(DatePicker)`
+/*export const StyledDatePicker = styled(DatePicker)`
   height: 35px;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -65,4 +76,4 @@ export const StyledDatePicker = styled(DatePicker)`
   ::placeholder {
     padding-right: 27px;
   }
-`;
+`;*/
