@@ -89,10 +89,14 @@ class MainForm extends Component {
                   <option value="Program3">البرنامج الثاني</option>
                 </StyledField>
               </StyledLabel>
-              <StyledLabel>
-                عدد الساعات
-                <StyledField type="text" name="NumOH" placeholder="عدد الساعات" />
-              </StyledLabel>
+              <StyledLabel>عدد الساعات</StyledLabel>
+              <StyledField
+                type="text"
+                name="hours"
+                placeholder="عدد الساعات"
+                value={this.state.hours}
+                onChange={this.handleChange}
+              />
 
               <StyledLabel>
                 الى
