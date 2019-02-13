@@ -104,7 +104,7 @@ class CreateActivity extends Component {
         <Header/>
         <StyledPage>
           <Title>  انشئ نشاطا جديداً </Title>
-          <MainForm fields={this.getFieldList()} action={this.submitAction} />
+          <MainForm fields={this.getFieldList()} action={this.submitAction} operationName="انشاء نشاط جديد" />
         </StyledPage>
         </React.Fragment>
     );
