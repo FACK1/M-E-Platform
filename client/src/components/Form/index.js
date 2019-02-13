@@ -4,10 +4,10 @@ import {
   StyledForm,
   StyledField,
   StyledLabel,
-  StyledContainer,
   StyledButton,
   StyledDatePicker
 } from "./index.style";
+import "./index.css";
 
 class MainForm extends Component {
   constructor(props) {
@@ -29,17 +29,31 @@ class MainForm extends Component {
     });
   };
 
+
+
+  renderFields() {
+    return this.props.fields.map((f) => {
+
+    });
+  };
+
+
+
+
+
+
+
   render() {
     return (
       <Formik>
         <StyledForm>
-          <StyledContainer>
-            <StyledLabel>اسم النشاط</StyledLabel>
+            <StyledLabel>اسم النشاط
             <StyledField
               type="text"
               name="ActivityName"
               placeholder="اسم النشاط"
             />
+            </StyledLabel>
             <StyledLabel>
               اختر الهدف
               <StyledField component="select" name="selectObj">
@@ -63,8 +77,6 @@ class MainForm extends Component {
                 placeholder="اسم المدرب"
               />
             </StyledLabel>
-          </StyledContainer>
-          <StyledContainer>
             <StyledLabel>
               اختر البرنامج
               <StyledField component="select" name="selectProgram">
@@ -93,11 +105,7 @@ class MainForm extends Component {
                 <option value="Place2"> بلدة</option>
               </StyledField>
             </StyledLabel>
-          </StyledContainer>
-          <StyledContainer>
           <StyledButton>انشاء</StyledButton>
-          </StyledContainer>
-
         </StyledForm>
       </Formik>
     );
