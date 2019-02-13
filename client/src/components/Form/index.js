@@ -40,13 +40,7 @@ class MainForm extends Component {
   };
 
   handleClick =()=>{
-    console.log("ag");
     axios.post('/activities',this.state)
-    .then((data)=>{
-      const result = data.data;
-}).catch((error) =>{
-  console.log(error);
-});
   };
 
   render() {
