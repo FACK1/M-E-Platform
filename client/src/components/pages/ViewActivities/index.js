@@ -8,28 +8,30 @@ import {StyledPage, StyledTilte} from "./index.style";
 
 class ViewActivities extends Component {
 
-
-  getColumnsList(){
-
-    const columns=[
-    { Header: 'اسم النشاط'},
-    { Header:'اسم المدرب'},
-    { Header: 'عدد الساعات'},
-    { Header: 'تاريخ البداية'},
-    { Header: 'تاريخ النهاية'},
-    { Header: 'الموقع'},
-    { Header:'البرنامج'},
-    { Header: 'الهدف'}]
-    return columns;
+  state={
+    result:[],
   }
 
+  getColumnsList(){
+    const columns=[
+      { Header:'id',accessor:'__id',show:false},
+      { Header: 'اسم النشاط',accessor:'name'},
+      { Header:'اسم المدرب',accessor:'trainerName'},
+      { Header: 'عدد الساعات',accessor:'hours'},
+      { Header: 'تاريخ البداية',accessor:'startDate'},
+      { Header: 'تاريخ النهاية',accessor:'endDate'},
+      { Header: 'الموقع',accessor:'location'},
+      { Header:'البرنامج',accessor:'program'},
+      { Header: 'الهدف',accessor:'objective'}];
+    return columns;
+  }
 
   componentDidMount() {
    axios
      .get("/activities")
      .then(data => {
        const result = data.data;
-       console.log("result",result.data);
+       console.log("result",result);
        this.setState({result:result.data});
      }).catch(error => {
        console.log(error);
