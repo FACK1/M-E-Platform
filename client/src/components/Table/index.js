@@ -10,16 +10,12 @@ class Table extends Component {
 
     renderColumns() {
       console.log("col",this.props.columns);
-      console.log("data",this.props.data);
-
+      console.log("data22222222",this.props.data);
       }
 
 
 
   render() {
-    // const data=[{
-    //   name: 'Tanner امان'
-    // }]
 
     return(
       <div>
