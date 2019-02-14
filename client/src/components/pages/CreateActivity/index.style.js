@@ -8,4 +8,5 @@ export const Title = styled.h1`
 
 export const StyledPage = styled.div`
 margin-right: 25%;
+padding-top: 15vh;
 `;
