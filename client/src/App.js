@@ -4,6 +4,8 @@ import {Route, BrowserRouter as Router} from 'react-router-dom'
 import Home from './components/pages/Home'
 import ViewActivities from './components/pages/ViewActivities'
 import CreateActivity from './components/pages/CreateActivity'
+import ActivityInformation from './components/pages/ActivityInformation'
+
 
 class App extends Component {
 
@@ -14,6 +16,7 @@ class App extends Component {
         <Route exact path='/' component={Home} className="page"/>
         <Route path='/ViewActivities' component={ViewActivities}/>
         <Route path='/CreateActivity' component={CreateActivity}/>
+        <Route path='/ActivityInformation' component={ActivityInformation}/>
       </div>
       </Router>
 
