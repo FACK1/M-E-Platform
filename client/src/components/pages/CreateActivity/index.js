@@ -96,6 +96,7 @@ class CreateActivity extends Component {
 
   submitAction(values) {
     axios.post('/activities', values);
+    // TODO: Handle the response and make an action depending on success state.
   }
 
   render() {
