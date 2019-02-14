@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {StyledLiTitle, StyledDetail, StyledUl} from "./index.style";
+import {StyledLiTitle, StyledDetailLi, StyledUl} from "./index.style";
 
 class ActivityDetails extends Component {
 
@@ -11,10 +11,21 @@ class ActivityDetails extends Component {
 getTrainingDetails() {
   const details = this.props.details;
   const renderedDetails = Object.keys(details).map((k) => {
-    if(k === 'name'){
-      return <StyledLiTitle>{details[k]}</StyledLiTitle>;
-    } else {
-      return <StyledDetail>{k}: {details[k]}</StyledDetail>;
+    switch (k) {
+      case 'name':
+        return <StyledLiTitle>{details[k]}</StyledLiTitle>;
+      case 'trainerName':
+        return <StyledDetailLi>{"المدرب:"} {details[k]}</StyledDetailLi>;
+      case 'place':
+        return <StyledDetailLi>{"الموقع:"} {details[k]}</StyledDetailLi>;
+      case 'hours':
+        return <StyledDetailLi>{"عدد الساعات:"} {details[k]}</StyledDetailLi>;
+      case 'startDate':
+        return <StyledDetailLi>{"من تاريخ:"} {details[k]}</StyledDetailLi>;
+      case 'endDate':
+        return <StyledDetailLi>{"حتى تاريخ:"} {details[k]}</StyledDetailLi>;
+      default:
+        return <StyledDetailLi>{k}: {details[k]}</StyledDetailLi>;
     }
   });
   return renderedDetails;
