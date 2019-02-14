@@ -1,18 +1,27 @@
 
 import React, { Component } from 'react';
-import {Title, StyledPage} from "./index.style";
+import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
-
-
+import ActivityDetails from "../../ActivityDetails"
 
  class ActivityInformation extends Component {
+
+
+getActivityDetails(){
+  return {
+    name: "التدريب على القيادة",
+    trainerName: "انس",
+    place: "قاعة 1",
+  };
+}
+
   render() {
     return (
         <React.Fragment>
-        <Header/>
-        <StyledPage>
-           <Title> تفاصيل النشاط </Title>
-        </StyledPage>
+          <Header />
+          <StyledActivityDetailsNav>
+            <ActivityDetails details={this.getActivityDetails()} />
+          </StyledActivityDetailsNav>
         </React.Fragment>
 
      );

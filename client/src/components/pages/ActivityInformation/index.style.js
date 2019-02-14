@@ -10,3 +10,11 @@ export const StyledPage = styled.div`
 margin-right: 25%;
 padding-top: 15vh;
 `;
+
+export const StyledActivityDetailsNav = styled.div`
+margin-right: 20%;
+background-color:#E5E5E5;
+width:20%;
+position:fixed;
+height:100vh;
+`;
