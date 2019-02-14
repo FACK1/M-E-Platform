@@ -8,23 +8,14 @@ class Table extends Component {
     super(props);
     }
 
-    renderColumns() {
-      console.log("col",this.props.columns);
-      console.log("data22222222",this.props.data);
-      }
-
-
-
   render() {
 
     return(
-      <div>
-      {this.renderColumns()}
+
      <ReactTable
     data={this.props.data}
     columns={this.props.columns}
   />
-  </div>
 )
 }
 }

@@ -31,10 +31,9 @@ class ViewActivities extends Component {
      .get("/activities")
      .then(data => {
        const result = data.data;
-       console.log("result",result);
        this.setState({result:result.data});
-     }).catch(error => {
-       console.log(error);
+     }).catch(() => {
+       alert("error");
      });
  }
   render() {
