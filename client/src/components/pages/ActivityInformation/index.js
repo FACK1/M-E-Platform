@@ -12,6 +12,9 @@ getActivityDetails(){
     name: "التدريب على القيادة",
     trainerName: "انس",
     place: "قاعة 1",
+    hours: "25",
+    startDate: "10/5/2015",
+    endDate: "19/5/2015",
   };
 }
 
