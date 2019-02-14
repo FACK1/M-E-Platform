@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Form, Field } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import Button from '../Button/index';
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -16,12 +17,11 @@ export const StyledForm = styled(Form)`
 `;
 
 export const StyledLabel = styled.label`
-  width: 49%;
+  width: 47%;
 `;
 
 
 export const StyledField = styled(Field)`
-  height: 35px;
   border: 1px solid #ccc;
   background-color: #fff;
   width: 100%;
@@ -42,7 +42,8 @@ export const StyledDatePicker = styled(DatePicker)`
   border-radius: 50px;
   border-color:#08A3C3;
   display: block;
-  ::placeholder {
-    padding-right: 27px;
-  }
+`;
+
+export const StyledButton = styled(Button)`
+width: 30%;
 `;
