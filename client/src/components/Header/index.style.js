@@ -19,22 +19,21 @@ width:30px;
 right:0;
 `;
 export const StyledLogo= styled.img`
-width:80%;
+width:60%;
 align-self:center;
-padding: 0px 22px;
 `;
 export const StyledUl = styled.ul`
-margin-top:-50px;
-margin-right: 20%;
+margin: 0px 30% 0px 0px;
+padding:0px;
 list-style-type: none;
-width:80%;
+width:70%;
 `;
 export const StyledLink = styled(Link)`
 display: block;
+margin-top: 20px;
 color: white;
 font-family: 'Cairo', sans-serif;
 font-size:2vw;
-padding: 15px 22px;
 text-decoration: none;
 `;
 export const StyledLi = styled.li`
