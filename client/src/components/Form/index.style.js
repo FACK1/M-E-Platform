@@ -2,55 +2,29 @@ import styled from "styled-components";
 import { Form, Field } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import Button from '../Button/index';
 
-export const StyledContainerBtn=styled.div`
-margin-right:422px;
-`;
-export const Title = styled.h1`
-  font-family: "Raleway", sans-serif;
-  font-weight: 600;
-  color: #4d4d4d;
-  font-size: 2.2em;
-`;
 export const StyledForm = styled(Form)`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: columns;
   align-items: center;
   flex-wrap: wrap;
+  width: 50%;
   margin-top:80px;
   margin-left:50px;
   margin-buttom:100px;
-
-`;
-
-export const StyledField = styled(Field)`
-  height: 35px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  width: 200px;
-  height: 30px;
-  border-radius: 50px;
-  border-color:#08A3C3;
-
-  ::placeholder {
-    padding-right: 27px;
-  }
 `;
 
 export const StyledLabel = styled.label`
-  width: 49%;
+  width: 47%;
 `;
 
-export const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
-export const StyledDatePicker = styled(DatePicker)`
-  height: 35px;
+export const StyledField = styled(Field)`
   border: 1px solid #ccc;
   background-color: #fff;
-  width: 200px;
+  width: 100%;
   height: 30px;
   border-radius: 50px;
   border-color:#08A3C3;
@@ -58,4 +32,18 @@ export const StyledDatePicker = styled(DatePicker)`
   ::placeholder {
     padding-right: 27px;
   }
+`;
+
+export const StyledDatePicker = styled(DatePicker)`
+  border: 1px solid #ccc;
+  background-color: #fff;
+  width: 100%;
+  height: 30px;
+  border-radius: 50px;
+  border-color:#08A3C3;
+  display: block;
+`;
+
+export const StyledButton = styled(Button)`
+width: 30%;
 `;
