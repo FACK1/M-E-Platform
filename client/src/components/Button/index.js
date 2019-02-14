@@ -1,12 +1,15 @@
 import React,{Component} from "react";
 
-import {StyledButton} from "./index.style";
+import StyledButton from "./index.style";
 
 class Button extends Component {
+  constructor(props){
+    super(props);
+  }
     render () {
       return(
         <StyledButton>
-          انشاء نشاط جديد
+          {this.props.value}
         </StyledButton>
       )
     }

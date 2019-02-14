@@ -1,128 +1,84 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
-import axios from 'axios';
 
-import Button from '../Button/index';
 import {
   StyledForm,
   StyledField,
   StyledLabel,
-  StyledContainer,
   StyledDatePicker,
-  StyledContainerBtn
+  StyledButton,
 } from "./index.style";
+import "./index.css";
 
 class MainForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      startDate: "",
-      endDate: ""
-    };
+    this.state = {dateFieldsValues: {}};
+    this.renderFields = this.renderFields.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
 
-  handleStartDate = date => {
-
-    this.setState({
-      startDate: date
+  static getSelectOptions(options) {
+    return options.map((o) => {
+      return <option value={o.value}> {o.label}</option>;
     });
-  };
-  handleEndDate = date => {
-    this.setState({
-      endDate: date
+  }
+
+  renderFields() {
+    const renderedFields = this.props.fields.map((f) => {
+      switch (f.type) {
+        case 'text':
+          return <StyledLabel>{f.label}
+            <StyledField
+              type={f.type}
+              name={f.name}
+              placeholder={f.placeholder}
+            />
+          </StyledLabel>;
+
+        case 'select':
+          return <StyledLabel>
+            {f.label}
+            <StyledField component={f.component} name={f.name}>
+              {MainForm.getSelectOptions(f.options)}
+            </StyledField>
+          </StyledLabel>;
+
+        case 'datePicker':
+          return <StyledLabel>
+            {f.label}
+            <StyledDatePicker
+              placeholderText={f.placeholderText}
+              selected={this.state.dateFieldsValues[f.name] || Date.now()}
+              onChange={date => { this.updateState(f.name, date);
+              const newDateFieldsValues = (this.state.dateFieldsValues);
+              newDateFieldsValues[f.name] = date;
+              this.setState({dateFieldsValues: newDateFieldsValues});
+              }}
+            />
+          </StyledLabel>;
+      }
     });
-  };
+    return renderedFields;
+  }
 
-  handleChange= ({target:{name,value}})=> {
-    this.setState({
-      [name]: value
-    })
-  };
-
-  handleClick =()=>{
-    axios.post('/activities',this.state)
-  };
+  updateState(name, value) {
+    const newFieldValue = (this.state.dateFieldsValues);
+    newFieldValue[name] = value;
+    this.setState({dateFieldsValues: newFieldValue});
+    //console.log(this.state);
+  }
 
   render() {
-      return (
-        <Formik  onSubmit={this.handleClick}>
-          <StyledForm>
-            <StyledContainer>
-              <StyledLabel>اسم النشاط</StyledLabel>
-              <StyledField
-                type="text"
-                name="name"
-                placeholder="اسم النشاط"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-              <StyledLabel>
-                اختر الهدف
-                <StyledField component="select" name="selectObj">
-                  <option value="obj1"> الهدف الاول</option>
-                  <option value="obj2"> الهدف الثاني</option>
-                </StyledField>
-              </StyledLabel>
-              <StyledLabel>
-                التاريخ من
-                <StyledDatePicker
-                  placeholderText="اختر تاريخ"
-                  selected={this.state.startDate}
-                  onChange={this.handleStartDate}
-                />
-              </StyledLabel>
-              <StyledLabel>اسم المدرب</StyledLabel>
-              <StyledField
-                type="text"
-                name="trainerName"
-                placeholder="اسم المدرب"
-                value={this.state.trainerName}
-                onChange={this.handleChange}
-              />
-              </StyledContainer>
-            <StyledContainer>
-              <StyledLabel>
-                اختر البرنامج
-                <StyledField component="select" name="selectProgram">
-                  <option value="Program1"> البرنامج الاول</option>
-                  <option value="Program2"> البرنامج الثاني</option>
-                  <option value="Program3">البرنامج الثاني</option>
-                </StyledField>
-              </StyledLabel>
-              <StyledLabel>عدد الساعات</StyledLabel>
-              <StyledField
-                type="text"
-                name="hours"
-                placeholder="عدد الساعات"
-                value={this.state.hours}
-                onChange={this.handleChange}
-              />
-
-              <StyledLabel>
-                الى
-                <StyledDatePicker
-                  placeholderText="اختر تاريخ"
-                  selected={this.state.endDate}
-                  onChange={this.handleEndDate}
-                />
-              </StyledLabel>
-              <StyledLabel>
-                اختر المكان
-                <StyledField component="select" name="selectPlace">
-                  <option value="Place1"> مدينة</option>
-                  <option value="Place2"> بلدة</option>
-                </StyledField>
-              </StyledLabel>
-            </StyledContainer>
-            <StyledContainerBtn>
-            <Button/>
-            </StyledContainerBtn>
-
-          </StyledForm>
-        </Formik>
-      );
-    }
-
+    return (
+      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}>
+        <StyledForm>
+          {this.renderFields()}
+          <StyledButton value={this.props.operationName}/>
+        </StyledForm>
+      </Formik>
+    );
+  }
 
 }
 
