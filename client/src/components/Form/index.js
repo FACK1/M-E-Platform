@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
 
-import Button from '../Button/index';
 import {
   StyledForm,
   StyledField,
   StyledLabel,
   StyledDatePicker,
+  StyledButton,
 } from "./index.style";
 import "./index.css";
 
@@ -74,7 +74,7 @@ class MainForm extends Component {
       <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}>
         <StyledForm>
           {this.renderFields()}
-          <Button value={this.props.operationName}/>
+          <StyledButton value={this.props.operationName}/>
         </StyledForm>
       </Formik>
     );
