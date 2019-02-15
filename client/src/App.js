@@ -16,7 +16,7 @@ class App extends Component {
         <Route exact path='/' component={Home} className="page"/>
         <Route path='/ViewActivities' component={ViewActivities}/>
         <Route path='/CreateActivity' component={CreateActivity}/>
-        <Route path='/ActivityInformation' component={ActivityInformation}/>
+        <Route path='/ActivityInformation/:id' component={ActivityInformation}/>
       </div>
       </Router>
 
