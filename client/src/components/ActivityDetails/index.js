@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {StyledLiTitle, StyledDetailLi, StyledUl} from "./index.style";
 import axios from 'axios';
+import {StyledLiTitle, StyledDetailLi, StyledUl} from "./index.style";
 
 class ActivityDetails extends Component {
 
@@ -10,6 +10,7 @@ class ActivityDetails extends Component {
       renderedDetails: <div>Loading...</div>,
     };
     this.getActivityDetailsById = this.getActivityDetailsById.bind(this);
+    this.getTrainingDetails = this.getTrainingDetails.bind(this);
   }
 
   componentDidMount(){
@@ -21,7 +22,6 @@ class ActivityDetails extends Component {
     const { activityId } = this.props;
       axios.get('/activities/'+activityId)
         .then(({ data }) => {
-          console.log("RESPONSE:", data);
           if(data.success){
             this.setState({ renderedDetails:  this.getTrainingDetails(data.data)});
           } else {
@@ -32,6 +32,11 @@ class ActivityDetails extends Component {
       });
   }
 
+  dateParser(date){
+    //console.log(new Date(date).toLocaleString());
+    const isoDate = ((new Date(date).toLocaleString()).split(',')[0]).split('/');
+    return (isoDate[2] + '/' + isoDate[0] + '/' + isoDate[1]);
+  }
 
 
 getTrainingDetails(detailsList) {
@@ -46,9 +51,9 @@ getTrainingDetails(detailsList) {
       case 'hours':
         return <StyledDetailLi>{"عدد الساعات:"} {detailsList[k]}</StyledDetailLi>;
       case 'startDate':
-        return <StyledDetailLi>{"من تاريخ:"} {detailsList[k]}</StyledDetailLi>;
+        return <StyledDetailLi>{"من تاريخ:"} {this.dateParser(detailsList[k])}</StyledDetailLi>;
       case 'endDate':
-        return <StyledDetailLi>{"حتى تاريخ:"} {detailsList[k]}</StyledDetailLi>;
+        return <StyledDetailLi>{"حتى تاريخ:"} {this.dateParser(detailsList[k])}</StyledDetailLi>;
       // default:
       //   return <StyledDetailLi>{k}: {details[k]}</StyledDetailLi>;
     }
