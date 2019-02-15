@@ -3,27 +3,21 @@ import React, { Component } from 'react';
 import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
+import axios from 'axios';
 
  class ActivityInformation extends Component {
 
-
-getActivityDetails(){
-  return {
-    name: "التدريب على القيادة",
-    trainerName: "انس",
-    place: "قاعة 1",
-    hours: "25",
-    startDate: "10/5/2015",
-    endDate: "19/5/2015",
-  };
-}
+  constructor(props) {
+    super(props);
+    //this.getActivityDetails = this.getActivityDetails.bind(this);
+  }
 
   render() {
     return (
         <React.Fragment>
           <Header />
           <StyledActivityDetailsNav>
-            <ActivityDetails details={this.getActivityDetails()} />
+            <ActivityDetails activityId={this.props.match.params.id} />
           </StyledActivityDetailsNav>
         </React.Fragment>
 
