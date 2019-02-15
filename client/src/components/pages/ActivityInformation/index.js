@@ -1,9 +1,7 @@
-
 import React, { Component } from 'react';
 import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
-import axios from 'axios';
 
  class ActivityInformation extends Component {
 
@@ -19,6 +17,7 @@ import axios from 'axios';
           <StyledActivityDetailsNav>
             <ActivityDetails activityId={this.props.match.params.id} />
           </StyledActivityDetailsNav>
+          <StyledPage/>
         </React.Fragment>
 
      );
