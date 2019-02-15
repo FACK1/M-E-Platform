@@ -39,7 +39,7 @@ const findById = (req, res) => {
       if(err){
         res.json({success: false, err: err.message});
       } else {
-        res.json({success: true, date: activity});
+        res.json({success: true, data: activity});
       }
     });
 };
