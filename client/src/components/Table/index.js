@@ -9,12 +9,13 @@ class Table extends Component {
     }
 
   render() {
+    const { data, columns } = this.props;
 
     return(
 
      <ReactTable
-    data={this.props.data}
-    columns={this.props.columns}
+    data={data}
+    columns={columns}
   />
 )
 }

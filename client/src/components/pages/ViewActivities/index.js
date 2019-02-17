@@ -37,12 +37,23 @@ class ViewActivities extends Component {
      });
  }
   render() {
-    return (
+    const columns=[
+      { Header:'id',accessor:'__id',show:false},
+      { Header: 'اسم النشاط',accessor:'name'},
+      { Header:'اسم المدرب',accessor:'trainerName'},
+      { Header: 'عدد الساعات',accessor:'hours'},
+      { Header: 'تاريخ البداية',accessor:'startDate'},
+      { Header: 'تاريخ النهاية',accessor:'endDate'},
+      { Header: 'الموقع',accessor:'location'},
+      { Header:'البرنامج',accessor:'program'},
+      { Header: 'الهدف',accessor:'objective'}];
+
+          return (
       <React.Fragment>
         <Header/>
         <StyledPage>
           <StyledTilte> جميع الانشطة </StyledTilte>
-          <Table columns={this.getColumnsList()} data={this.state.result}/>
+          <Table columns={columns} data={this.state.result}/>
           <li><Link to="/CreateActivity">اضافة نشاط جديد</Link></li>
         </StyledPage>
       </React.Fragment>
