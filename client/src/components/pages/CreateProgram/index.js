@@ -24,7 +24,7 @@ class CreateProgram extends Component {
   }
 
   submitAction(values) {
-    axios.post('/CreateProgram', values);
+    axios.post('/programs', values);
   }
 
   render() {
