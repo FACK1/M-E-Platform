@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
+import Table from '../../Table';
 
  class ActivityInformation extends Component {
 
@@ -10,13 +11,22 @@ import ActivityDetails from "../../ActivityDetails"
   }
 
   render() {
+    const { id } = this.props.match.params;
+    const columns = [
+      { Header:'id',accessor:'__id',show:false},
+      { Header: 'اسم الطالب',accessor:'name'},
+      { Header:'العمر',accessor:'age'},
+      { Header: 'الجنس',accessor:'gender'},
+    ];
     return (
         <React.Fragment>
           <Header />
           <StyledActivityDetailsNav>
-            <ActivityDetails activityId={this.props.match.params.id} />
+            <ActivityDetails activityId={id} />
           </StyledActivityDetailsNav>
-          <StyledPage/>
+          <StyledPage>
+            <Table columns={columns} data={[]}/>
+          </StyledPage>
         </React.Fragment>
 
      );
