@@ -6,7 +6,11 @@ import {Title, StyledPage} from "./index.style";
 
 class CreateProgram extends Component {
 
-  getFieldList() {
+  submitAction(values) {
+    axios.post('/programs', values);
+  }
+
+  render() {
     const fields = [
       {
         label: "اسم البرنامج",
@@ -20,20 +24,12 @@ class CreateProgram extends Component {
         placeholder: "اسم المؤسسة",
       }
     ];
-    return fields;
-  }
-
-  submitAction(values) {
-    axios.post('/programs', values);
-  }
-
-  render() {
     return (
       <React.Fragment>
         <Header/>
         <StyledPage>
           <Title> انشئ برنامجا جديداً </Title>
-          <MainForm fields={this.getFieldList()} action={this.submitAction} operationName="  انشاء برنامجا جديداً" />
+          <MainForm fields={fields} action={this.submitAction} operationName="  انشاء برنامجا جديداً" />
         </StyledPage>
         </React.Fragment>
     );
