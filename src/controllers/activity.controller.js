@@ -40,4 +40,19 @@ const findAll = (req, res) => {
       }
     });
 };
-module.exports = { add, findAll };
+
+const findById = (req, res) => {
+  const { id } = req.params;
+  Activity.findById(id)
+    .populate('program')
+    .populate('objective')
+    .exec((err, activity) => {
+      if (err) {
+        res.json({ success: false, err: err.message });
+      } else {
+        res.json({ success: true, data: activity });
+      }
+    });
+};
+
+module.exports = { add, findAll, findById };

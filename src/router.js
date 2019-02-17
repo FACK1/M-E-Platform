@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/activities', controllers.activity.add);
 router.get('/activities', controllers.activity.findAll);
+router.get('/activities/:id', controllers.activity.findById);
 
 router.post('/users', controllers.user.add);
 

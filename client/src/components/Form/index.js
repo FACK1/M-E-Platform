@@ -15,7 +15,7 @@ class MainForm extends Component {
     super(props);
     this.state = {dateFieldsValues: {}};
     this.renderFields = this.renderFields.bind(this);
-    this.updateState = this.updateState.bind(this);
+    this.updateDatesState = this.updateDatesState.bind(this);
   }
 
   static getSelectOptions(options) {
@@ -50,7 +50,7 @@ class MainForm extends Component {
             <StyledDatePicker
               placeholderText={f.placeholderText}
               selected={this.state.dateFieldsValues[f.name] || Date.now()}
-              onChange={date => { this.updateState(f.name, date);
+              onChange={date => { this.updateDatesState(f.name, date);
               const newDateFieldsValues = (this.state.dateFieldsValues);
               newDateFieldsValues[f.name] = date;
               this.setState({dateFieldsValues: newDateFieldsValues});
@@ -62,11 +62,10 @@ class MainForm extends Component {
     return renderedFields;
   }
 
-  updateState(name, value) {
-    const newFieldValue = (this.state.dateFieldsValues);
-    newFieldValue[name] = value;
-    this.setState({dateFieldsValues: newFieldValue});
-    //console.log(this.state);
+  updateDatesState(name, value) {
+    const newFieldsValues = (this.state.dateFieldsValues);
+    newFieldsValues[name] = value;
+    this.setState({dateFieldsValues: newFieldsValues});
   }
 
   render() {

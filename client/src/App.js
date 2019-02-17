@@ -4,6 +4,8 @@ import {Route, BrowserRouter as Router} from 'react-router-dom'
 import Home from './components/pages/Home'
 import ViewActivities from './components/pages/ViewActivities'
 import CreateActivity from './components/pages/CreateActivity'
+import ActivityInformation from './components/pages/ActivityInformation'
+
 import CreateUser from './components/pages/CreateUser'
 import ViewUsers from './components/pages/ViewUsers'
 
@@ -18,7 +20,11 @@ class App extends Component {
         <Route path='/ViewUsers' component={ViewUsers}/>
 
         <Route path='/CreateActivity' component={CreateActivity}/>
+<<<<<<< HEAD
         <Route path='/CreateUser' component={CreateUser}/>
+=======
+        <Route path='/ActivityInformation/:id' component={ActivityInformation}/>
+>>>>>>> master
       </div>
       </Router>
 
