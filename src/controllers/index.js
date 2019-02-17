@@ -1,3 +1,4 @@
 const activity = require('./activity.controller');
+const user = require('./user.controller');
 
-module.exports = { activity };
+module.exports = { activity, user };
