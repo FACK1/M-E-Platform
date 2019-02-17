@@ -6,8 +6,6 @@ import ViewActivities from './components/pages/ViewActivities'
 import CreateActivity from './components/pages/CreateActivity'
 import ActivityInformation from './components/pages/ActivityInformation'
 
-import CreateUser from './components/pages/CreateUser'
-import ViewUsers from './components/pages/ViewUsers'
 
 class App extends Component {
 
@@ -17,14 +15,8 @@ class App extends Component {
       <div>
         <Route exact path='/' component={Home} className="page"/>
         <Route path='/ViewActivities' component={ViewActivities}/>
-        <Route path='/ViewUsers' component={ViewUsers}/>
-
         <Route path='/CreateActivity' component={CreateActivity}/>
-<<<<<<< HEAD
-        <Route path='/CreateUser' component={CreateUser}/>
-=======
         <Route path='/ActivityInformation/:id' component={ActivityInformation}/>
->>>>>>> master
       </div>
       </Router>
 
