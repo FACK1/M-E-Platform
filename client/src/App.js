@@ -5,8 +5,10 @@ import Home from './components/pages/Home'
 import ViewActivities from './components/pages/ViewActivities'
 import CreateActivity from './components/pages/CreateActivity'
 import ActivityInformation from './components/pages/ActivityInformation'
+import CreateProgram from './components/pages/CreateProgram'
 import ViewUsers from './components/pages/ViewUsers'
 import CreateUser from './components/pages/CreateUser'
+
 
 
 class App extends Component {
@@ -22,6 +24,8 @@ class App extends Component {
         <Route path='/CreateActivity' component={CreateActivity}/>
         <Route path='/CreateUser' component={CreateUser}/>
         <Route path='/ActivityInformation/:id' component={ActivityInformation}/>
+        <Route path='/CreateProgram' component={CreateProgram}/>
+
       </div>
       </Router>
 

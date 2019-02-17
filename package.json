@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/FACK1/M-A-Platform#readme",
   "dependencies": {
+    "ajv": "^6.8.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "env2": "^2.2.2",
