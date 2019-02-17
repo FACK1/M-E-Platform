@@ -14,8 +14,8 @@ import Table from '../../Table';
     const columns=[
       { Header:'id',accessor:'__id',show:false},
       { Header: 'اسم الطالب',accessor:'name'},
-      { Header:'العمر',accessor:'trainerName'},
-      { Header: 'الجنس',accessor:'hours'},
+      { Header:'العمر',accessor:'age'},
+      { Header: 'الجنس',accessor:'gender'},
     ];
     return columns;
   }
