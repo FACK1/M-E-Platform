@@ -10,21 +10,7 @@ class ViewActivities extends Component {
 
   state={
     result:[],
-  }
-
-  getColumnsList(){
-    const columns=[
-      { Header:'id',accessor:'__id',show:false},
-      { Header: 'اسم النشاط',accessor:'name'},
-      { Header:'اسم المدرب',accessor:'trainerName'},
-      { Header: 'عدد الساعات',accessor:'hours'},
-      { Header: 'تاريخ البداية',accessor:'startDate'},
-      { Header: 'تاريخ النهاية',accessor:'endDate'},
-      { Header: 'الموقع',accessor:'location'},
-      { Header:'البرنامج',accessor:'program'},
-      { Header: 'الهدف',accessor:'objective'}];
-    return columns;
-  }
+  };
 
   componentDidMount() {
    axios
