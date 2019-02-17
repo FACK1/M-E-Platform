@@ -25,7 +25,18 @@ const findAll = (req, res) => {
       if (err) {
         res.json({ success: false, error: err.message });
       } else {
-        res.json({ success: true, data: activities });
+        const data = activities.map(activity => ({
+          id: activity._id, // eslint-disable-line no-underscore-dangle
+          name: activity.name,
+          startDate: new Date(activity.startDate),
+          endDate: new Date(activity.endDate),
+          trainerName: activity.trainerName,
+          location: activity.location,
+          program: activity.program.name,
+          objective: activity.objective.name,
+          hours: activity.hours,
+        }));
+        res.json({ success: true, data });
       }
     });
 };
