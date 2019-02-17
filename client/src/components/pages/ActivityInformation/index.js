@@ -7,7 +7,6 @@ import ActivityDetails from "../../ActivityDetails"
 
   constructor(props) {
     super(props);
-    //this.getActivityDetails = this.getActivityDetails.bind(this);
   }
 
   render() {
