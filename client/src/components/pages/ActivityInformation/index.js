@@ -10,26 +10,22 @@ import Table from '../../Table';
     super(props);
   }
 
-  getStudentsColumns() {
-    const columns=[
+  render() {
+    const { id } = this.props.match.params;
+    const columns = [
       { Header:'id',accessor:'__id',show:false},
       { Header: 'اسم الطالب',accessor:'name'},
       { Header:'العمر',accessor:'age'},
       { Header: 'الجنس',accessor:'gender'},
     ];
-    return columns;
-  }
-
-  render() {
-    const x = [];
     return (
         <React.Fragment>
           <Header />
           <StyledActivityDetailsNav>
-            <ActivityDetails activityId={this.props.match.params.id} />
+            <ActivityDetails activityId={id} />
           </StyledActivityDetailsNav>
           <StyledPage>
-            <Table columns={this.getStudentsColumns()} data={x}/>
+            <Table columns={columns} data={[]}/>
           </StyledPage>
         </React.Fragment>
 
