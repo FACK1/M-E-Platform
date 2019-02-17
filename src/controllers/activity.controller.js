@@ -47,10 +47,10 @@ const findById = (req, res) => {
     .populate('program')
     .populate('objective')
     .exec((err, activity) => {
-      if(err){
-        res.json({success: false, err: err.message});
+      if (err) {
+        res.json({ success: false, err: err.message });
       } else {
-        res.json({success: true, data: activity});
+        res.json({ success: true, data: activity });
       }
     });
 };
