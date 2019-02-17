@@ -8,6 +8,8 @@ const router = express.Router();
 router.post('/activities', controllers.activity.add);
 router.get('/activities', controllers.activity.findAll);
 router.get('/activities/:id', controllers.activity.findById);
+router.post('/programs', controllers.program.add);
+
 
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
