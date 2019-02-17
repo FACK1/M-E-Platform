@@ -11,12 +11,12 @@ class CreateProgram extends Component {
       {
         label: "اسم البرنامج",
         type: "text",
-        name: "programName",
+        name: "name",
         placeholder: "اسم البرنامج",
       },{
         label: "اسم المؤسسة",
         type: "text",
-        name: "companyName",
+        name: "organization",
         placeholder: "اسم المؤسسة",
       }
     ];
