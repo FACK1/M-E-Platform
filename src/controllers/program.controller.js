@@ -1,4 +1,4 @@
-const Program = require('../models/Program'); // eslint-disable-line no-unused-vars
+const Program = require('../models/Program');
 
 const add = (req, res) => {
   const {
