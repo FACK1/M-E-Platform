@@ -12,7 +12,7 @@ const Header = () =>{
         <StyledUl className="header">
             <StyledLi><StyledLink to="/ViewActivities">الأنشطة</StyledLink ></StyledLi>
             <StyledLi><StyledLink  to="/Programs">البرامج</StyledLink ></StyledLi>
-            <StyledLi><StyledLink  to="/contact">المستخدمين</StyledLink ></StyledLi>
+            <StyledLi><StyledLink  to="/ViewUsers">المستخدمين</StyledLink ></StyledLi>
             <StyledLi><StyledLink  to="/objectives">التقارير</StyledLink ></StyledLi>
             <StyledLi><StyledLink  to="/Programs">الأهداف</StyledLink ></StyledLi>
             <StyledLi><StyledButton>تسجيل الخروج</StyledButton></StyledLi>

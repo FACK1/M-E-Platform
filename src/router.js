@@ -11,6 +11,8 @@ router.get('/activities/:id', controllers.activity.findById);
 router.post('/programs', controllers.program.add);
 
 
+router.post('/users', controllers.user.add);
+
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
