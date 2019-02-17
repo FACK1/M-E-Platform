@@ -7,7 +7,7 @@ import {StyledPage, StyledTilte} from "./index.style";
 class ViewUsers extends Component {
 
   render() {
-          return (
+    return (
       <React.Fragment>
         <Header/>
         <StyledPage>
