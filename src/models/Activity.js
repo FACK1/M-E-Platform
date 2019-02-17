@@ -4,10 +4,10 @@ const { Schema } = mongoose;
 
 const ActivitySchema = mongoose.Schema({
   name: String,
-  hours: Date,
+  trainerName: String,
+  hours: Number,
   startDate: Date,
   endDate: Date,
-  trainerName: String,
   location: String,
   program: { type: Schema.Types.ObjectId, ref: 'Program' },
   objective: { type: Schema.Types.ObjectId, ref: 'Objective' },
