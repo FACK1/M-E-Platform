@@ -1,3 +1,5 @@
 const activity = require('./activity.controller');
+const program = require('./program.controller');
 
-module.exports = { activity };
+
+module.exports = { activity, program };
