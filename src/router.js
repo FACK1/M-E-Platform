@@ -12,6 +12,7 @@ router.post('/programs', controllers.program.add);
 
 
 router.post('/users', controllers.user.add);
+router.get('/users', controllers.user.findAll);
 
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
