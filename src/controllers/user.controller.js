@@ -23,7 +23,7 @@ const findAll = (req, res) => {
         res.json({ success: false, error: err.message });
       } else {
         const data = users.map(user => ({
-          id: user._id, // eslint-disable-line no-underscore-dangle
+          id: user.id, // eslint-disable-line no-underscore-dangle
           name: user.name,
           type: user.type,
           living: user.living,

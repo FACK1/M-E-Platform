@@ -59,7 +59,7 @@ class ViewUsers extends Component {
 
 	render() {
 		const columns = [
-      {Header: 'id',accessor: '__id',show: false},
+      {Header: 'id',accessor: 'id',show: false},
 			{Header: 'اسم الطالب',accessor: 'name'},
 			{Header: 'النوع',accessor: 'type'},
 			{Header: 'ممكانا لسكن',accessor: 'living'},
