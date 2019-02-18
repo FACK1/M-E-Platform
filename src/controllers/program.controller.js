@@ -11,8 +11,26 @@ const add = (req, res) => {
     .then(() => {
       res.json({ success: true });
     }).catch((err) => {
-      res.json({ success: false, error: err.message });
+      res.json({ success: false, err: err.message });
     });
 };
 
-module.exports = { add };
+
+const findAll = (req, res) => {
+  Program.find({})
+    .populate('program')
+    .exec((err, programs) => {
+      if (err) {
+        res.json({ success: false, err: err.message });
+      } else {
+        const data = programs.map(program => ({
+          id: program.id,
+          name: program.name,
+          organization: program.organization,
+        }));
+        res.json({ success: true, data });
+      }
+    });
+};
+
+module.exports = { add, findAll };
