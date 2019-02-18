@@ -27,7 +27,8 @@ class App extends Component {
         <Route path='/ActivityInformation/:id' component={ActivityInformation}/>
         <Route path='/CreateProgram' component={CreateProgram}/>
         <Route path='/ViewPrograms' component={ViewPrograms}/>
-        <Route path='/ProgramInformation' component={ProgramInformation}/>
+        <Route path='/ProgramInformation/:id' component={ProgramInformation}/>
+
 
 
       </div>
