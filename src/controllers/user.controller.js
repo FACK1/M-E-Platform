@@ -24,11 +24,12 @@ const findAll = (req, res) => {
       } else {
         const data = users.map(user => ({
           id: user._id, // eslint-disable-line no-underscore-dangle
+          name: user.name,
           type: user.type,
           living: user.living,
           address: user.address,
           gender: user.gender,
-          dateOfBirth: user.dateOfBirth,
+          dateOfBirth: new Date(user.dateOfBirth),
           phoneNo: user.phoneNo,
           email: user.email,
         }));
