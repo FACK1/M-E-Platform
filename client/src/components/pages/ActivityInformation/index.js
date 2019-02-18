@@ -3,11 +3,16 @@ import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
 import Table from '../../Table';
+import MainForm from '../../Form';
 
  class ActivityInformation extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  submitAction() {
+    alert('Submitted');
   }
 
   render() {
@@ -18,6 +23,14 @@ import Table from '../../Table';
       { Header:'العمر',accessor:'age'},
       { Header: 'الجنس',accessor:'gender'},
     ];
+    const fields = [
+      {
+        label: 'أضف طالباً للنشاط',
+        type: 'text',
+        name: 'userName',
+        placeholder: 'اسسم الطالب'
+      }
+    ];
     return (
         <React.Fragment>
           <Header />
@@ -25,6 +38,7 @@ import Table from '../../Table';
             <ActivityDetails activityId={id} />
           </StyledActivityDetailsNav>
           <StyledPage>
+            <MainForm fields={fields} action={this.submitAction} operationName="إنشاء" />
             <Table columns={columns} data={[]}/>
           </StyledPage>
         </React.Fragment>
