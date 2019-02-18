@@ -15,4 +15,22 @@ const add = (req, res) => {
     });
 };
 
-module.exports = { add };
+
+const findAll = (req, res) => {
+  Program.find({})
+    .populate('program')
+    .exec((err, programs) => {
+      if (err) {
+        res.json({ success: false, error: err.message });
+      } else {
+        const data = programs.map(program => ({
+          id: program._id, // eslint-disable-line no-underscore-dangle
+          name: program.name,
+          organization: program.organization,
+        }));
+        res.json({ success: true, data });
+      }
+    });
+};
+
+module.exports = { add, findAll };

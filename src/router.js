@@ -9,8 +9,6 @@ router.post('/activities', controllers.activity.add);
 router.get('/activities', controllers.activity.findAll);
 router.get('/activities/:id', controllers.activity.findById);
 router.post('/programs', controllers.program.add);
-
-
 router.post('/users', controllers.user.add);
 
 router.get('*', (req, res) => {
