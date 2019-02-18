@@ -4,6 +4,7 @@ import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
 import Table from '../../Table';
 import MainForm from '../../Form';
+import axios from 'axios';
 
  class ActivityInformation extends Component {
 
@@ -11,8 +12,17 @@ import MainForm from '../../Form';
     super(props);
   }
 
-  submitAction() {
-    alert('Submitted');
+  submitAction({ userName }) {
+    axios.get('/users/searchByName/'+ userName)
+      .then((response) => {
+        if(response.data.success) {
+          console.log(response.data.data);
+        } else {
+          console.log(response.data.err);
+        }
+      }).catch((err) => {
+        console.log(err.message);
+    });
   }
 
   render() {
