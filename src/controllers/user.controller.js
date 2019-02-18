@@ -14,4 +14,17 @@ const add = (req, res) => {
       res.json({ success: false, error: err.message });
     });
 };
-module.exports = { add };
+
+const findByName = (req, res) => {
+  const { name } = req.params;
+  User.find({'type': 'student', name: new RegExp('^'+name, "i")}, 'id name dateOfBirth')
+    .exec((err, users) => {
+      if(err){
+        res.json({success: false, err: err.message});
+      } else {
+        res.json({success: true, data: users});
+      }
+    });
+};
+
+module.exports = { add, findByName };
