@@ -9,7 +9,7 @@ import CreateProgram from './components/pages/CreateProgram'
 import ViewUsers from './components/pages/ViewUsers'
 import CreateUser from './components/pages/CreateUser'
 import ViewPrograms from './components/pages/ViewPrograms'
-
+import ProgramInformation from './components/pages/ProgramInformation'
 
 
 
@@ -27,6 +27,8 @@ class App extends Component {
         <Route path='/ActivityInformation/:id' component={ActivityInformation}/>
         <Route path='/CreateProgram' component={CreateProgram}/>
         <Route path='/ViewPrograms' component={ViewPrograms}/>
+        <Route path='/ProgramInformation' component={ProgramInformation}/>
+
 
       </div>
       </Router>
