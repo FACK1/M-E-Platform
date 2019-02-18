@@ -24,7 +24,7 @@ class ViewPrograms extends Component {
 
   render() {
     const columns=[
-      { Header:'id',accessor:'__id',show:false},
+      { Header:'id',accessor:'id',show:false},
       { Header: 'اسم البرنامج',accessor:'name'},
       { Header: 'اسم المؤسسة',accessor:'organization'},
 ];
