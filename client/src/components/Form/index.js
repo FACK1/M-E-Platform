@@ -77,6 +77,7 @@ class MainForm extends Component {
       onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}
       validate={(values) => {
         let errors = {};
+
           if(!values.name)
               errors.name = 'Valid nameRequired';
               console.log("errr");
