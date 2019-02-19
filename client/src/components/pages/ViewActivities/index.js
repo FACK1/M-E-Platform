@@ -25,7 +25,8 @@ class ViewActivities extends Component {
   render() {
     const columns=[
       { Header:'id',accessor:'__id',show:false},
-      { Header: 'اسم النشاط',accessor:'name'},
+      { Header: 'اسم النشاط',accessor:'name',
+      Cell: ({ row, original }) => (<Link to={{pathname:`/ActivityInformation/${original.id}`}}>{row.name}</Link>)},
       { Header:'اسم المدرب',accessor:'trainerName'},
       { Header: 'عدد الساعات',accessor:'hours'},
       { Header: 'تاريخ البداية',accessor:'startDate'},

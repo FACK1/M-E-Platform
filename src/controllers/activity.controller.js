@@ -13,7 +13,7 @@ const add = (req, res) => {
     .then(() => {
       res.json({ success: true });
     }).catch((err) => {
-      res.json({ success: false, error: err.message });
+      res.json({ success: false, err: err.message });
     });
 };
 
@@ -23,7 +23,7 @@ const findAll = (req, res) => {
     .populate('objective')
     .exec((err, activities) => {
       if (err) {
-        res.json({ success: false, error: err.message });
+        res.json({ success: false, err: err.message });
       } else {
         const data = activities.map(activity => ({
           id: activity._id, // eslint-disable-line no-underscore-dangle

@@ -20,11 +20,39 @@ const findByName = (req, res) => {
   User.find({ type: 'student', name: new RegExp(`^${name}`, 'i') }, 'id name dateOfBirth')
     .exec((err, users) => {
       if (err) {
-        res.json({ success: false, err: err.message });
+        res.json({
+          success: false,
+          err: err.message,
+        });
       } else {
-        res.json({ success: true, data: users });
+        res.json({
+          success: true,
+          data: users,
+        });
       }
     });
 };
 
-module.exports = { add, findByName };
+const findAll = (req, res) => {
+  User.find({})
+    .exec((err, users) => {
+      if (err) {
+        res.json({ success: false, error: err.message });
+      } else {
+        const data = users.map(user => ({
+          id: user.id, // eslint-disable-line no-underscore-dangle
+          name: user.name,
+          type: user.type,
+          living: user.living,
+          address: user.address,
+          gender: user.gender,
+          dateOfBirth: new Date(user.dateOfBirth),
+          phoneNo: user.phoneNo,
+          email: user.email,
+        }));
+        res.json({ success: true, data });
+      }
+    });
+};
+
+module.exports = { add, findAll, findByName };
