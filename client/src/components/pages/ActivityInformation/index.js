@@ -14,17 +14,13 @@ import Table from '../../Table';
        userId: null,
        userNameInput: '',
      };
-     this.renderSuggestions = this.renderSuggestions.bind(this);
-     this.onChangeAction = this.onChangeAction.bind(this);
-     this.onSubmitAddStudent = this.onSubmitAddStudent.bind(this);
-     this.checkSuggestionsClick = this.checkSuggestionsClick.bind(this);
    }
 
-   generateUserWithDate(user){
+   generateUserWithDate = (user) => {
      return `${user.name} - ${user.dateOfBirth}`;
-   }
+   };
 
-   checkSuggestionsClick(inputValue){
+   checkSuggestionsClick = (inputValue) => {
      let checked = false;
      this.state.suggestions.forEach((suggestion) => {
        checked = checked ? checked : this.generateUserWithDate(suggestion) === inputValue;
@@ -32,7 +28,7 @@ import Table from '../../Table';
      return checked;
    }
 
-   onChangeAction({ target: { value } }) {
+   onChangeAction = ({ target: { value } }) => {
      this.setState({ userNameInput: value });
      if(value && !this.checkSuggestionsClick(value)){
        axios.get('/users/searchByName/' + value)
@@ -49,7 +45,7 @@ import Table from '../../Table';
      }
    }
 
-   onSubmitAddStudent(event) {
+   onSubmitAddStudent = (event) => {
      event.preventDefault();
      const userNameWithDate = this.state.userNameInput;
      const chosenUsersList = this.state.suggestions.filter((user) => {
@@ -60,7 +56,7 @@ import Table from '../../Table';
      });
    }
 
-   renderSuggestions() {
+   renderSuggestions = () => {
      return this.state.suggestions.map((suggestion, key) => {
        return <option value={this.generateUserWithDate(suggestion)} key={key} />;
      });
