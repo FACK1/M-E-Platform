@@ -54,7 +54,6 @@ import Table from '../../Table';
      this.setState({ userId: chosenUsersList[0]._id }, () => {
        const { id } = this.props.match.params;
        this.addUserToActivity(this.state.userId, id);
-       console.log(this.state);
      });
    };
 
@@ -65,7 +64,18 @@ import Table from '../../Table';
    };
 
    addUserToActivity = (userId, activityId) => {
-     return true;
+     axios.post('/activities/addUserToActivity', { userId, activityId })
+       .then(({ data }) => {
+         if(data.success){
+           alert("User Added successfully!");
+         } else {
+           alert(`Adding user to activity Error: ${data.err}`);
+         }
+       })
+       .catch((err) => {
+         alert(`Send request Error: ${err.message}`);
+       });
+     console.log("User ID: ", userId, "\nActivity ID: ", activityId);
    };
 
    render() {
