@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
+import validate from '..../utils/validate.js';
+import getValidationSchema from '..../utils/validation.js';
 
 import {
   StyledForm,
@@ -70,7 +72,7 @@ class MainForm extends Component {
 
   render() {
     return (
-      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}>
+      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}} validate={validate}>
         <StyledForm>
           {this.renderFields()}
           <StyledButton value={this.props.operationName}/>
