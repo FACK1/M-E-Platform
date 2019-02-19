@@ -33,4 +33,17 @@ const findAll = (req, res) => {
     });
 };
 
-module.exports = { add, findAll };
+const findById = (req, res) => {
+  const { id } = req.params;
+  Program.findById(id)
+    .populate('program')
+    .exec((err, program) => {
+      if (err) {
+        res.json({ success: false, err: err.messag });
+      } else {
+        res.json({ success: true, data: program });
+      }
+    });
+};
+
+module.exports = { add, findAll, findById };
