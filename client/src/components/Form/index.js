@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
-import validate from '..../utils/validate.js';
-import getValidationSchema from '..../utils/validation.js';
+import validate from '../../utils/validate';
+import getValidationSchema from '../../utils/validation';
 
 import {
   StyledForm,
@@ -36,6 +36,7 @@ class MainForm extends Component {
               name={f.name}
               placeholder={f.placeholder}
             />
+
           </StyledLabel>;
 
         case 'select':
@@ -72,7 +73,15 @@ class MainForm extends Component {
 
   render() {
     return (
-      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}} validate={validate}>
+      <Formik
+      onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}
+      validate={(values) => {
+        let errors = {};
+          if(!values.name)
+              errors.name = 'Valid nameRequired';
+              console.log("errr");
+              return errors;
+    }}>
         <StyledForm>
           {this.renderFields()}
           <StyledButton value={this.props.operationName}/>

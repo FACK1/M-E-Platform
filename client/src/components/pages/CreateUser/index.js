@@ -8,12 +8,12 @@ class CreateUser extends Component {
 
     state={
       messege:'',
+      error:'',
     };
   submitAction(values) {
     axios.post('/users', values)
     .then(data => this.setState({messege:data}))
     .catch(err => this.setState({messege:err}));
-
   }
 
   render() {
@@ -114,7 +114,12 @@ class CreateUser extends Component {
         <Header/>
         <StyledPage>
           <Title>إضافة مستخدم جديد </Title>
-          <MainForm fields={fields} action={this.submitAction} operationName="إضافة مستخدم جديد" messege={this.messege} />
+
+          <MainForm
+          fields={fields}
+          action={this.submitAction}
+          operationName="إضافة مستخدم جديد"
+          validationError={this.error} />
         </StyledPage>
         </React.Fragment>
     );
