@@ -5,7 +5,22 @@ import MainForm from '../../Form'
 import {Title, StyledPage} from "./index.style";
 
 class CreateActivity extends Component {
+  state={
+    programs:[],
+    objectives:[],
+  };
 
+  programOptions(){
+    return this.state.programs.map((p) => {
+      return { label:p.name , value:p.id };
+    });
+  }
+
+  objectiveOptions(){
+    return this.state.objectives.map((o) => {
+      return { label:o.name , value:o.id };
+    });
+  }
   getFieldList() {
     const fields = [
       {
@@ -16,19 +31,10 @@ class CreateActivity extends Component {
       },
       {
         label: "اختر الهدف",
-        name: "objective1",
+        name: "objective",
         component: "select",
         type: "select",
-        options: [
-          {
-            label: "الهدف الاول",
-            value: "obj1",
-          },
-          {
-            label: "الهدف الثاني",
-            value: "obj2",
-          },
-        ]
+        options: this.objectiveOptions()
       },
       {
         label: "اسم المدرب",
@@ -38,23 +44,10 @@ class CreateActivity extends Component {
       },
       {
         label: "اختر البرنامج",
-        name: "program1",
+        name: "program",
         component: "select",
         type: "select",
-        options: [
-          {
-            label: "البرنامج الاول",
-            value: "Program1",
-          },
-          {
-            label: "البرنامج الثاني",
-            value: "Program2",
-          },
-          {
-            label: "البرنامج الثالث",
-            value: "Program3",
-          },
-        ]
+        options: this.programOptions()
       },
       {
         label: "عدد الساعات",
@@ -94,6 +87,29 @@ class CreateActivity extends Component {
     return fields;
   }
 
+  componentDidMount() {
+   axios
+     .get("/programs")
+     .then(({data}) => {
+       if (data.success) {
+       const result =data.data;
+       this.setState({programs:result});
+     }
+     }).catch(() => {
+       alert("error");
+     });
+
+     axios
+       .get("/objectives")
+       .then(({data}) => {
+         if (data.success) {
+         const result =data.data;
+         this.setState({objectives:result});
+       }
+       }).catch(() => {
+         alert("error");
+       });
+ }
   submitAction(values) {
     axios.post('/activities', values);
     // TODO: Handle the response and make an action depending on success state.
