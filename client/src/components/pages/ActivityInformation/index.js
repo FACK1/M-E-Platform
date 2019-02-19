@@ -26,7 +26,7 @@ import Table from '../../Table';
        checked = checked ? checked : this.generateUserWithDate(suggestion) === inputValue;
      });
      return checked;
-   }
+   };
 
    onChangeAction = ({ target: { value } }) => {
      this.setState({ userNameInput: value });
@@ -43,7 +43,7 @@ import Table from '../../Table';
          alert(`Getting Data Error: ${err.message}`);
        });
      }
-   }
+   };
 
    onSubmitAddStudent = (event) => {
      event.preventDefault();
@@ -52,15 +52,21 @@ import Table from '../../Table';
        return (userNameWithDate === this.generateUserWithDate(user));
      });
      this.setState({ userId: chosenUsersList[0]._id }, () => {
+       const { id } = this.props.match.params;
+       this.addUserToActivity(this.state.userId, id);
        console.log(this.state);
      });
-   }
+   };
 
    renderSuggestions = () => {
      return this.state.suggestions.map((suggestion, key) => {
        return <option value={this.generateUserWithDate(suggestion)} key={key} />;
      });
-   }
+   };
+
+   addUserToActivity = (userId, activityId) => {
+     return true;
+   };
 
    render() {
      const { id } = this.props.match.params;
