@@ -75,7 +75,6 @@ import Table from '../../Table';
        .catch((err) => {
          alert(`Send request Error: ${err.message}`);
        });
-     console.log("User ID: ", userId, "\nActivity ID: ", activityId);
    };
 
    render() {
