@@ -31,7 +31,7 @@ import Table from '../../Table';
    onChangeAction = ({ target: { value } }) => {
      this.setState({ userNameInput: value });
      if(value && !this.checkSuggestionsClick(value)){
-       axios.get('/users/searchByName/' + value)
+       axios.get(`/users/searchByName/${value}`)
        .then(({ data }) => {
          if (data.success) {
            this.setState({ suggestions: data.data });
