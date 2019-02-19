@@ -23,9 +23,9 @@ class ViewPrograms extends Component {
  }
 
   render() {
-    const columns=[ 
+    const columns=[
       { Header:'id',accessor:'id',show:false},
-      { Header: 'اسم البرنامج',accessor:'name'},
+      { Header: 'اسم البرنامج',accessor:'name', Cell: ({ row, original }) => (<Link to={{pathname:`/ProgramInformation/${original.id}`}}>{row.name}</Link>)},
       { Header: 'اسم المؤسسة',accessor:'organization'},
 ];
 
