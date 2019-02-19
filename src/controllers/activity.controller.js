@@ -1,6 +1,7 @@
 const Program = require('../models/Program'); // eslint-disable-line no-unused-vars
 const Objective = require('../models/Objective'); // eslint-disable-line no-unused-vars
 const Activity = require('../models/Activity');
+const ActivitiesUser = require('../models/ActivitiesUser');
 
 const add = (req, res) => {
   const {
@@ -55,4 +56,16 @@ const findById = (req, res) => {
     });
 };
 
-module.exports = { add, findAll, findById };
+const addUserToActivity = (req, res) => {
+  const { userId, activityId } = req.body;
+  const activitiesUser = new ActivitiesUser({ userId, activityId });
+  activitiesUser.save((err) => {
+    if(err){
+      res.json({ success: false, err: err.message, });
+    } else {
+      res.json({ success: true, });
+    }
+  });
+};
+
+module.exports = { add, findAll, findById, addUserToActivity };
