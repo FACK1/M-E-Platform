@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('env2')('config.env');
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useCreateIndex: true });
 
 const db = mongoose.connection;
 // eslint-disable-next-line no-console
