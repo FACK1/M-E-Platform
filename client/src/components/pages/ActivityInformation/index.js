@@ -3,7 +3,7 @@ import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
 import Table from '../../Table';
-import { Formik, Field } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import axios from 'axios';
 import Button from '../../Button';
 
@@ -13,10 +13,11 @@ import Button from '../../Button';
      super(props);
      this.state = {
        suggestions: [],
+       userId: null,
      };
      this.renderSuggestions = this.renderSuggestions.bind(this);
      this.onChangeAction = this.onChangeAction.bind(this);
-     //this.onSubmitAddStudent = this.setUser.bind(this);
+     this.onSubmitAddStudent = this.onChangeAction.bind(this);
    }
 
    onChangeAction({ target: { value } }) {
@@ -36,12 +37,16 @@ import Button from '../../Button';
      console.log("State:", this.state.suggestions);
    }
 
-/*   onSubmitAddStudent({ userName }) {
-     const userNameWithDate = userName;
-     const choosenUser = this.state.suggestions.filter((user) => {
 
+
+   onSubmitAddStudent({ userName }) {
+     const userNameWithDate = userName;
+     const choosenUsersList = this.state.suggestions.filter((user) => {
+       return (userNameWithDate === `${user.name - user.dateOfBirth}`);
      });
-   }*/
+     this.setState({ userId: choosenUsersList[0].id });
+     console.log(this.state);
+   }
 
    renderSuggestions() {
      return this.state.suggestions.map((suggestion, key) => {
@@ -78,15 +83,15 @@ import Button from '../../Button';
            <ActivityDetails activityId={id}/>
          </StyledActivityDetailsNav>
          <StyledPage>
-           <Formik>
-             <form>
+           <Formik onSubmit={this.onSubmitAddStudent}>
+             <Form>
                <Field type="text" name="userName" placeholder="اكتب اسم الطالب"
                       onChange={this.onChangeAction} list="userNames"/>
                <Button value="إضافة">اضافة</Button>
                <datalist id="userNames">
                  {this.renderSuggestions()}
                </datalist>
-             </form>
+             </Form>
            </Formik>
            <Table columns={columns} data={[]}/>
          </StyledPage>
