@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
 import Table from '../../Table';
-import { Formik, Field, Form } from 'formik';
-import axios from 'axios';
-import Button from '../../Button';
 
  class ActivityInformation extends Component {
 
@@ -14,14 +12,29 @@ import Button from '../../Button';
      this.state = {
        suggestions: [],
        userId: null,
+       userNameInput: '',
      };
      this.renderSuggestions = this.renderSuggestions.bind(this);
      this.onChangeAction = this.onChangeAction.bind(this);
-     this.onSubmitAddStudent = this.onChangeAction.bind(this);
+     this.onSubmitAddStudent = this.onSubmitAddStudent.bind(this);
+     this.checkSuggestionsClick = this.checkSuggestionsClick.bind(this);
+   }
+
+   generateUserWithDate(user){
+     return `${user.name} - ${user.dateOfBirth}`;
+   }
+
+   checkSuggestionsClick(inputValue){
+     let checked = false;
+     this.state.suggestions.forEach((suggestion) => {
+       checked = checked ? checked : this.generateUserWithDate(suggestion) === inputValue;
+     });
+     return checked;
    }
 
    onChangeAction({ target: { value } }) {
-     if(value){
+     this.setState({ userNameInput: value });
+     if(value && !this.checkSuggestionsClick(value)){
        axios.get('/users/searchByName/' + value)
        .then(({ data }) => {
          if (data.success) {
@@ -34,23 +47,22 @@ import Button from '../../Button';
          alert(`Getting Data Error: ${err.message}`);
        });
      }
-     console.log("State:", this.state.suggestions);
    }
 
-
-
-   onSubmitAddStudent({ userName }) {
-     const userNameWithDate = userName;
-     const choosenUsersList = this.state.suggestions.filter((user) => {
-       return (userNameWithDate === `${user.name - user.dateOfBirth}`);
+   onSubmitAddStudent(event) {
+     event.preventDefault();
+     const userNameWithDate = this.state.userNameInput;
+     const chosenUsersList = this.state.suggestions.filter((user) => {
+       return (userNameWithDate === this.generateUserWithDate(user));
      });
-     this.setState({ userId: choosenUsersList[0].id });
-     console.log(this.state);
+     this.setState({ userId: chosenUsersList[0]._id }, () => {
+       console.log(this.state);
+     });
    }
 
    renderSuggestions() {
      return this.state.suggestions.map((suggestion, key) => {
-       return <option value={`${suggestion.name} - ${suggestion.dateOfBirth}`} key={key} />;
+       return <option value={this.generateUserWithDate(suggestion)} key={key} />;
      });
    }
 
@@ -83,16 +95,16 @@ import Button from '../../Button';
            <ActivityDetails activityId={id}/>
          </StyledActivityDetailsNav>
          <StyledPage>
-           <Formik onSubmit={this.onSubmitAddStudent}>
-             <Form>
-               <Field type="text" name="userName" placeholder="اكتب اسم الطالب"
-                      onChange={this.onChangeAction} list="userNames"/>
-               <Button value="إضافة">اضافة</Button>
-               <datalist id="userNames">
-                 {this.renderSuggestions()}
-               </datalist>
-             </Form>
-           </Formik>
+           <form onSubmit={this.onSubmitAddStudent}>
+               <input
+                 type="text"
+                 name="userName"
+                 placeholder="اكتب اسم الطالب"
+                 onChange={this.onChangeAction} list="userNames"
+               />
+               <button value="إضافة">اضافة</button>
+               <datalist id="userNames"> {this.renderSuggestions()} </datalist>
+           </form>
            <Table columns={columns} data={[]}/>
          </StyledPage>
        </React.Fragment>
