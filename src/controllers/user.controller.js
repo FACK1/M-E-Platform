@@ -17,12 +17,12 @@ const add = (req, res) => {
 
 const findByName = (req, res) => {
   const { name } = req.params;
-  User.find({'type': 'student', name: new RegExp('^'+name, "i")}, 'id name dateOfBirth')
+  User.find({ type: 'student', name: new RegExp(`^${name}`, 'i') }, 'id name dateOfBirth')
     .exec((err, users) => {
-      if(err){
-        res.json({success: false, err: err.message});
+      if (err) {
+        res.json({ success: false, err: err.message });
       } else {
-        res.json({success: true, data: users});
+        res.json({ success: true, data: users });
       }
     });
 };
