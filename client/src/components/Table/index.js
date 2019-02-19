@@ -16,6 +16,7 @@ class Table extends Component {
      <ReactTable
     data={data}
     columns={columns}
+    noDataText='لايوجد بيانات'
   />
 )
 }
