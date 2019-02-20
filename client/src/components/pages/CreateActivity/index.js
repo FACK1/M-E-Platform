@@ -63,18 +63,7 @@ class CreateActivity extends Component {
       {
         label: "اختر المكان",
         name: "location",
-        component: "select",
-        type: "select",
-        options: [
-          {
-            label: "مدينة",
-            value: "Place1",
-          },
-          {
-            label: "بلدة",
-            value: "Place2",
-          },
-        ]
+        type: "text",
       },
       {
         label: "الناريخ من",
