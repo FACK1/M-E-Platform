@@ -23,7 +23,7 @@ class ProgramInformation extends Component {
       .get(`/activities/getActivitesByProgramId/${programId}`)
       .then(response => {
         const result = response.data.activities;
-        this.setState({ result: result });
+        this.setState({result});
       })
       .catch(() => {
         alert("error");
