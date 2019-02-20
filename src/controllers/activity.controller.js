@@ -68,6 +68,29 @@ const addUserToActivity = (req, res) => {
   });
 };
 
+const getActivitesByProgramId = (req, res) => {
+  const { programId } = req.params;
+  Activity.find({ program: programId })
+    .exec((err, activities) => { // eslint-disable-line consistent-return
+      if (err) {
+        res.json({ success: false, err: err.message });
+      } else {
+        const activitiesPromises = activities.map(
+          activity => ActivitiesUser.count({ activityId: activity.id }).then((usersCount) => {
+            const modifiedActivity = { id: activity.id, usersCount, name: activity.name };
+            return modifiedActivity;
+          }),
+        );
+        return Promise.all(activitiesPromises).then((activitiesList) => {
+          res.json({ success: true, activities: activitiesList });
+        }).catch((activitiesListErr) => {
+          res.json({ success: false, err: activitiesListErr.message });
+        });
+      }
+    });
+};
+
+
 module.exports = {
-  add, findAll, findById, addUserToActivity,
+  add, findAll, findById, addUserToActivity, getActivitesByProgramId,
 };
