@@ -41,7 +41,6 @@ class ViewActivities extends Component {
         <StyledPage>
           <StyledTilte> جميع الانشطة </StyledTilte>
           <Table columns={columns} data={this.state.result}/>
-          <li><Link to="/CreateActivity">اضافة نشاط جديد</Link></li>
         </StyledPage>
       </React.Fragment>
     );
