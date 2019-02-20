@@ -68,9 +68,16 @@ class MainForm extends Component {
     this.setState({dateFieldsValues: newFieldsValues});
   }
 
+  onFormSubmit = (values) => {
+    //console.log("Values submitted ::", values);
+    const fullValues = { ...this.props.initialValues, ...values };
+    this.props.action({ ...fullValues, ...this.state.dateFieldsValues })
+  };
+
   render() {
+    console.log("INITIALS: ", this.props.initialValues);
     return (
-      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}>
+      <Formik onSubmit={this.onFormSubmit} initialValues={this.props.initialValues}>
         <StyledForm>
           {this.renderFields()}
           <StyledButton value={this.props.operationName}/>
