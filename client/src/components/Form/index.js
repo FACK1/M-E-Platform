@@ -18,7 +18,7 @@ class MainForm extends Component {
     this.updateDatesState = this.updateDatesState.bind(this);
   }
 
-  static getSelectOptions(options) {
+  getSelectOptions(options) {
     return options.map((o) => {
       return <option value={o.value}> {o.label}</option>;
     });
@@ -40,7 +40,7 @@ class MainForm extends Component {
           return <StyledLabel>
             {f.label}
             <StyledField component={f.component} name={f.name}>
-              {MainForm.getSelectOptions(f.options)}
+              {this.getSelectOptions(f.options)}
             </StyledField>
           </StyledLabel>;
 
@@ -68,9 +68,15 @@ class MainForm extends Component {
     this.setState({dateFieldsValues: newFieldsValues});
   }
 
+  setInitialValues = () => {
+    return this.props.initialValues || {};
+  };
+
   render() {
     return (
-      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}}>
+      <Formik onSubmit={(values) => { this.props.action({...values, ...this.state.dateFieldsValues})}} initialValues={
+        this.setInitialValues()
+      }>
         <StyledForm>
           {this.renderFields()}
           <StyledButton value={this.props.operationName}/>
