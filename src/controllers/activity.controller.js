@@ -27,7 +27,7 @@ const findAll = (req, res) => {
         res.json({ success: false, err: err.message });
       } else {
         const data = activities.map(activity => ({
-          id: activity._id, // eslint-disable-line no-underscore-dangle
+          id: activity.id,
           name: activity.name,
           startDate: new Date(activity.startDate),
           endDate: new Date(activity.endDate),
