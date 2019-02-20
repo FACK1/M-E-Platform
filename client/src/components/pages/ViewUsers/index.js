@@ -62,9 +62,9 @@ class ViewUsers extends Component {
       {Header: 'id',accessor: 'id',show: false},
 			{Header: 'اسم الطالب',accessor: 'name'},
 			{Header: 'النوع',accessor: 'type'},
-			{Header: 'ممكانا لسكن',accessor: 'living'},
+			{Header: 'مكان السكن',accessor: 'living'},
 			{Header: 'العنوان',accessor: 'address'},
-			{Header: 'الجنسس',accessor: 'gender'},
+			{Header: 'الجنس',accessor: 'gender'},
 			{Header: 'تاريخ الميلاد',accessor: 'dateOfBirth'},
 			{Header: 'رقم الهاتف',accessor: 'phoneNo'},
 			{Header: 'الايميل',	accessor: 'email'}
