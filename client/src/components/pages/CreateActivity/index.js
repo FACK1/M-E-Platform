@@ -87,7 +87,6 @@ class CreateActivity extends Component {
      .then(({data}) => {
        if (data.success) {
        const result =data.data;
-       console.log("Result::", result);
        this.setState({programs:result, initialValues: { ...this.state.initialValues, program: result[0].id }});
      }
      }).catch(() => {

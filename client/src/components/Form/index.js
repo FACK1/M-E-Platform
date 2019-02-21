@@ -75,7 +75,6 @@ class MainForm extends Component {
   };
 
   render() {
-    console.log("INITIALS: ", this.props.initialValues);
     return (
       <Formik onSubmit={this.onFormSubmit} initialValues={this.props.initialValues}>
         <StyledForm>
