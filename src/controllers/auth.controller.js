@@ -37,9 +37,36 @@ const register = (req, res) => {
 };
 
 const login = (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
+  User.findOne({ email })
+    .then((user) => new Promise((resolve, reject) => {
+      console.log("User password:::", password);
+      console.log("Hashed password:::", user);
+      bcrypt.compare(password, user.password)
+        .then((result) => {
+          if (result){
+            resolve(user.id);
+          } else {
+            reject(new Error('Bad password!'));
+          }
+
+        }).catch((err) => {
+          reject(err);
+      });
+    }))
+    .then(generateCookieToken)
+    .then((token) => {
+      res.cookie('id', token, { maxAge: 360000000 });
+      res.json({success: true, data: { loginState: true }});
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ success: false, err: err.message });
+    });
+
 };
 
 module.exports = {
   register,
+  login,
 };
