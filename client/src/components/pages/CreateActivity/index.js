@@ -5,9 +5,13 @@ import MainForm from '../../Form'
 import {Title, StyledPage} from "./index.style";
 
 class CreateActivity extends Component {
+
   state={
     programs:[],
     objectives:[],
+    initialValues: {
+      name: '', trainerName: '', hours: 0,
+    },
   };
 
   programOptions(){
@@ -21,6 +25,7 @@ class CreateActivity extends Component {
       return { label:o.name , value:o.id };
     });
   }
+
   getFieldList() {
     const fields = [
       {
@@ -58,18 +63,7 @@ class CreateActivity extends Component {
       {
         label: "اختر المكان",
         name: "location",
-        component: "select",
-        type: "select",
-        options: [
-          {
-            label: "مدينة",
-            value: "Place1",
-          },
-          {
-            label: "بلدة",
-            value: "Place2",
-          },
-        ]
+        type: "text",
       },
       {
         label: "الناريخ من",
@@ -93,7 +87,7 @@ class CreateActivity extends Component {
      .then(({data}) => {
        if (data.success) {
        const result =data.data;
-       this.setState({programs:result});
+       this.setState({programs:result, initialValues: { ...this.state.initialValues, program: result[0].id }});
      }
      }).catch(() => {
        alert("error");
@@ -104,12 +98,13 @@ class CreateActivity extends Component {
        .then(({data}) => {
          if (data.success) {
          const result =data.data;
-         this.setState({objectives:result});
+         this.setState({objectives:result, initialValues: { ...this.state.initialValues, objective: result[0].id}});
        }
        }).catch(() => {
          alert("error");
        });
  }
+
   submitAction(values) {
     axios.post('/activities', values);
     // TODO: Handle the response and make an action depending on success state.
@@ -121,7 +116,7 @@ class CreateActivity extends Component {
         <Header/>
         <StyledPage>
           <Title>  انشئ نشاطا جديداً </Title>
-          <MainForm fields={this.getFieldList()} action={this.submitAction} operationName="انشاء نشاط جديد" />
+          <MainForm fields={this.getFieldList()} action={this.submitAction} operationName="انشاء نشاط جديد" initialValues={this.state.initialValues} />
         </StyledPage>
         </React.Fragment>
     );
