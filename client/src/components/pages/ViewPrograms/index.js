@@ -34,7 +34,7 @@ class ViewPrograms extends Component {
         <Header />
         <StyledPage>
           <StyledTilte> جميع البرامج </StyledTilte>
-          <li><Link to="/CreateProgram">إضافة برنامج جديد</Link></li>
+          <Link to="/CreateProgram">إضافة برنامج جديد</Link>
           <Table columns={columns} data={this.state.result}/>
         </StyledPage>
       </React.Fragment>
