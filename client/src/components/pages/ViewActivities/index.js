@@ -15,13 +15,24 @@ class ViewActivities extends Component {
   componentDidMount() {
    axios
      .get("/activities")
-     .then(data => {
-       const result = data.data;
-       this.setState({result:result.data});
+     .then(({data}) => {
+       const result = data.data.map((activity)=>{
+         activity.startDate= this.dateParser(activity.startDate);
+         activity.endDate= this.dateParser(activity.endDate);
+         return activity;
+       });
+
+       this.setState({result:result});
      }).catch(() => {
        alert("error");
      });
  }
+
+ dateParser(date){
+   const isoDate = ((new Date(date).toLocaleString()).split(',')[0]).split('/');
+   return (isoDate[2] + '/' + isoDate[0] + '/' + isoDate[1]);
+ }
+
   render() {
     const columns=[
       { Header:'id',accessor:'__id',show:false},
