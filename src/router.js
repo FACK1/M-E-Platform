@@ -10,6 +10,7 @@ router.post('/activities', controllers.activity.add);
 router.get('/activities', controllers.activity.findAll);
 router.get('/activities/:id', controllers.activity.findById);
 router.post('/activities/addUserToActivity', controllers.activity.addUserToActivity);
+router.get('/activities/getActivitesByProgramId/:programId', controllers.activity.getActivitesByProgramId);
 
 router.post('/programs', controllers.program.add);
 router.get('/programs', controllers.program.findAll);
