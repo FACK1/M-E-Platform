@@ -11,11 +11,17 @@ class ViewUsers extends Component {
 		result: [],
 	};
 
+	dateParser(date){
+    const isoDate = ((new Date(date).toLocaleString()).split(',')[0]).split('/');
+    return (isoDate[2] + '/' + isoDate[0] + '/' + isoDate[1]);
+  }
+
 	componentDidMount() {
 		axios
 			.get("/users")
 			.then(data => {
 				const result = data.data;
+
 				result.data.forEach((item) => {
 					switch (item.type) {
 						case "student":
@@ -50,6 +56,10 @@ class ViewUsers extends Component {
 							item.living = 'قرية';
 							break;
 					}
+				if (item.dateOfBirth) {
+					item.dateOfBirth= this.dateParser(item.dateOfBirth);
+				}
+
 				});
 				this.setState({result: result.data});
 			}).catch(() => {
@@ -62,9 +72,9 @@ class ViewUsers extends Component {
       {Header: 'id',accessor: 'id',show: false},
 			{Header: 'اسم الطالب',accessor: 'name'},
 			{Header: 'النوع',accessor: 'type'},
-			{Header: 'ممكانا لسكن',accessor: 'living'},
+			{Header: 'مكان السكن',accessor: 'living'},
 			{Header: 'العنوان',accessor: 'address'},
-			{Header: 'الجنسس',accessor: 'gender'},
+			{Header: 'الجنس',accessor: 'gender'},
 			{Header: 'تاريخ الميلاد',accessor: 'dateOfBirth'},
 			{Header: 'رقم الهاتف',accessor: 'phoneNo'},
 			{Header: 'الايميل',	accessor: 'email'}

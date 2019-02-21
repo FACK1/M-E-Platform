@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const controllers = require('./controllers');
+const validations = require('./validations');
 
 const router = express.Router();
 
@@ -15,8 +16,7 @@ router.post('/programs', controllers.program.add);
 router.get('/programs', controllers.program.findAll);
 router.get('/programs/:id', controllers.program.findById);
 
-
-router.post('/users', controllers.user.add);
+router.post('/users', validations.user, controllers.user.add);
 router.get('/users', controllers.user.findAll);
 router.get('/users/searchByName/:name', controllers.user.findByName);
 
