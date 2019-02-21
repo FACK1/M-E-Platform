@@ -4,8 +4,9 @@ import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
 import Table from '../../Table';
+import CsvParse from '@vtex/react-csv-parse'
 
- class ActivityInformation extends Component {
+class ActivityInformation extends Component {
 
    constructor(props) {
      super(props);
@@ -77,7 +78,18 @@ import Table from '../../Table';
        });
    };
 
+   handleData = data => {
+  this.setState({ data })
+  }
+
    render() {
+  const keys = [
+     "الاسم الثلاثي",
+     "الجنس",
+     "تاريخ الميلاد",
+     "العنوان",
+     "رقم الهاتف",
+  ]
      const { id } = this.props.match.params;
      const columns = [
        {
@@ -99,6 +111,8 @@ import Table from '../../Table';
        },
      ];
 
+
+
      return (
        <React.Fragment>
          <Header/>
@@ -112,9 +126,15 @@ import Table from '../../Table';
                  name="userName"
                  placeholder="اكتب اسم الطالب"
                  onChange={this.onChangeAction} list="userNames"
-               />
+                    />
                <button value="إضافة">اضافة</button>
-               <datalist id="userNames"> {this.renderSuggestions()} </datalist>
+               <CsvParse
+                keys={keys}
+                onDataUploaded={this.handleData}
+                onError={this.handleError}
+                render={onChange => <input type="file" onChange={onChange} />}
+                  />
+               <datalist id="userNames"> {this.renderSuggestions()}</datalist>
            </form>
            <Table columns={columns} data={[]}/>
          </StyledPage>
