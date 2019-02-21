@@ -10,6 +10,8 @@ import ViewUsers from './components/pages/ViewUsers'
 import CreateUser from './components/pages/CreateUser'
 import ViewPrograms from './components/pages/ViewPrograms'
 import ProgramInformation from './components/pages/ProgramInformation'
+import Login from './components/pages/Login'
+
 
 
 
@@ -28,6 +30,8 @@ class App extends Component {
         <Route path='/CreateProgram' component={CreateProgram}/>
         <Route path='/ViewPrograms' component={ViewPrograms}/>
         <Route path='/ProgramInformation/:id' component={ProgramInformation}/>
+        <Route path='/Login' component={Login}/>
+
 
 
 
