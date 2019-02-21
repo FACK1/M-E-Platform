@@ -85,8 +85,8 @@ class ViewUsers extends Component {
 			<Header/>
 			<StyledPage>
 			<StyledTilte> جميع المستخدمين </StyledTilte>
+			<Link to = "/CreateUser"> إضافة مستخدم جديد </Link>
       <Table columns = {columns} data = {this.state.result}/>
-			<li> <Link to = "/CreateUser"> إضافة مستخدم جديد </Link></li>
 			</StyledPage>
       </React.Fragment>
 		);
