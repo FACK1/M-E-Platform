@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 require('env2')('config.env');
 
 const saveUser = (user) => new Promise((resolve, reject) => {
@@ -33,6 +34,10 @@ const register = (req, res) => {
     .catch((err) => {
       res.json({ success: false, err: err.message });
     });
+};
+
+const login = (req, res) => {
+  const { username, password } = req.body;
 };
 
 module.exports = {
