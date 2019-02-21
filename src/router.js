@@ -22,6 +22,8 @@ router.get('/users/searchByName/:name', controllers.user.findByName);
 
 router.get('/objectives', controllers.objective.findAll);
 
+router.post('/auth/register', controllers.auth.register);
+
 
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
