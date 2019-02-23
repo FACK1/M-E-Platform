@@ -123,6 +123,7 @@ class CreateUser extends Component {
       address: '',
       gender: 'male',
       phoneNo: '',
+      dateOfBirth: Date.now(),
     };
     return (
       <React.Fragment>

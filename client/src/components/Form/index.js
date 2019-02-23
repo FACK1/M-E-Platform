@@ -69,11 +69,12 @@ class MainForm extends Component {
     this.setState({dateFieldsValues: newFieldsValues});
   }
 
-  onFormSubmit = (values) => {
+  onFormSubmit = (values, { resetForm }) => {
     //console.log("Values submitted ::", values);
     const fullValues = { ...this.props.initialValues, ...values };
     (this.props.action({ ...fullValues, ...this.state.dateFieldsValues }))
       .then((successMessage) => {
+        resetForm(this.props.initialValues);
         this.setState({ message: <StyledSuccessMessage>{successMessage}</StyledSuccessMessage> });
       })
       .catch((err) => {

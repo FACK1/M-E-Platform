@@ -33,12 +33,13 @@ class CreateProgram extends Component {
         placeholder: "اسم المؤسسة",
       }
     ];
+    const initialValues = { name: '', organization: '' };
     return (
       <React.Fragment>
         <Header/>
         <StyledPage>
           <Title> انشئ برنامجا جديداً </Title>
-          <MainForm fields={fields} action={this.submitAction} operationName="  انشاء برنامجا جديداً" />
+          <MainForm fields={fields} action={this.submitAction} operationName="انشاء برنامجا جديداً" initialValues={initialValues} />
         </StyledPage>
         </React.Fragment>
     );
