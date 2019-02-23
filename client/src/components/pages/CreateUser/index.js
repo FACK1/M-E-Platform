@@ -16,7 +16,6 @@ class CreateUser extends Component {
             reject(new Error(data.err));
           }
         }).catch((err) => {
-          console.log(err);
           reject(err);
       })
     });

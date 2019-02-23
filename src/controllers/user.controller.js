@@ -9,10 +9,8 @@ const add = (req, res) => {
   });
   user.save()
     .then(() => {
-      console.log("Hello From Success!!!");
       res.json({ success: true });
     }).catch((err) => {
-    console.log("Hello From Failer!!!, Error message is :::", err.message);
       res.json({ success: false, err: err.message });
     });
 };
