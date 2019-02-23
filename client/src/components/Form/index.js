@@ -7,6 +7,9 @@ import {
   StyledLabel,
   StyledDatePicker,
   StyledButton,
+  StyledMessage,
+  StyledSuccessMessage,
+  StyledFailMessage,
 } from "./index.style";
 import "./index.css";
 
@@ -14,7 +17,6 @@ class MainForm extends Component {
   constructor(props) {
     super(props);
     this.state = {dateFieldsValues: {}};
-    this.renderFields = this.renderFields.bind(this);
     this.updateDatesState = this.updateDatesState.bind(this);
   }
 
@@ -24,7 +26,7 @@ class MainForm extends Component {
     });
   }
 
-  renderFields() {
+  renderFields = () => {
     const renderedFields = this.props.fields.map((f) => {
       switch (f.type) {
         case 'text':
@@ -62,7 +64,7 @@ class MainForm extends Component {
     return renderedFields;
   }
 
-  updateDatesState(name, value) {
+  updateDatesState = (name, value) => {
     const newFieldsValues = (this.state.dateFieldsValues);
     newFieldsValues[name] = value;
     this.setState({dateFieldsValues: newFieldsValues});
@@ -71,7 +73,13 @@ class MainForm extends Component {
   onFormSubmit = (values) => {
     //console.log("Values submitted ::", values);
     const fullValues = { ...this.props.initialValues, ...values };
-    this.props.action({ ...fullValues, ...this.state.dateFieldsValues })
+    (this.props.action({ ...fullValues, ...this.state.dateFieldsValues }))
+      .then(() => {
+        this.setState({ message: <StyledSuccessMessage>Added Successfully</StyledSuccessMessage> });
+      })
+      .catch((err) => {
+        this.setState({ message: <StyledFailMessage>Adding Failed</StyledFailMessage>});
+      });
   };
 
   render() {
@@ -80,6 +88,7 @@ class MainForm extends Component {
         <StyledForm>
           {this.renderFields()}
           <StyledButton value={this.props.operationName}/>
+          <StyledMessage>{this.state.message}</StyledMessage>
         </StyledForm>
       </Formik>
     );
