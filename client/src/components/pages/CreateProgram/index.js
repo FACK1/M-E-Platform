@@ -11,9 +11,9 @@ class CreateProgram extends Component {
       axios.post('/programs', values)
         .then(({ data }) => {
           if(data.success){
-            resolve();
+            resolve('تمت اضافة البرنامج بنجاح');
           } else {
-            reject(data.err);
+            reject(new Error(data.err));
           }
         });
     });

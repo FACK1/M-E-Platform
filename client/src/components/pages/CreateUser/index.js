@@ -11,9 +11,8 @@ class CreateUser extends Component {
       axios.post('/users', values)
         .then(({ data }) => {
           if(data.success){
-            resolve();
+            resolve('تمت اضافة المستخدم بنجاح');
           } else {
-            console.log("Error happen, rejected");
             reject(new Error(data.err));
           }
         }).catch((err) => {

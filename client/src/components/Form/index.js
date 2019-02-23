@@ -73,11 +73,12 @@ class MainForm extends Component {
     //console.log("Values submitted ::", values);
     const fullValues = { ...this.props.initialValues, ...values };
     (this.props.action({ ...fullValues, ...this.state.dateFieldsValues }))
-      .then(() => {
-        this.setState({ message: <StyledSuccessMessage>Added Successfully</StyledSuccessMessage> });
+      .then((successMessage) => {
+        this.setState({ message: <StyledSuccessMessage>{successMessage}</StyledSuccessMessage> });
       })
       .catch((err) => {
-        this.setState({ message: <StyledFailMessage>Adding Failed</StyledFailMessage>});
+        this.setState({ message: <StyledFailMessage>فشل العملية</StyledFailMessage>});
+        alert("فشل العملية، السبب: " + "Error: " + err.message);
       });
   };
 
