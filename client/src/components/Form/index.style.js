@@ -44,6 +44,17 @@ export const StyledDatePicker = styled(DatePicker)`
   display: block;
 `;
 
+export const StyledSuccessMessage = styled.p`
+
+`;
+
+export const StyledFailMessage = styled.p`
+
+`;
+
+export const StyledMessage = styled.div`
+`;
+
 export const StyledButton = styled(Button)`
 width: 30%;
 `;
