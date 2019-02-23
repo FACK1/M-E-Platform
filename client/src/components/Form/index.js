@@ -17,7 +17,6 @@ class MainForm extends Component {
   constructor(props) {
     super(props);
     this.state = {dateFieldsValues: {}};
-    this.updateDatesState = this.updateDatesState.bind(this);
   }
 
   static getSelectOptions(options) {
