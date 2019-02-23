@@ -45,11 +45,15 @@ export const StyledDatePicker = styled(DatePicker)`
 `;
 
 export const StyledSuccessMessage = styled.p`
-
+  font-size: 1.1vw;
+  font-weight: bold;
+  color: #4BB543;
 `;
 
 export const StyledFailMessage = styled.p`
-
+  font-size: 1.1vw;
+  font-weight: bold;
+  color: red;
 `;
 
 export const StyledMessage = styled.div`
