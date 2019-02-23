@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const ActivitiesUser = require('../models/ActivitiesUser');
 
 const add = (req, res) => {
   const {
@@ -55,4 +56,29 @@ const findAll = (req, res) => {
     });
 };
 
-module.exports = { add, findAll, findByName };
+const getAgeByDate = (date) => {
+  return (new Date()).getUTCFullYear() - date.getUTCFullYear();
+};
+
+const getUsersByActivityId = (req, res) => {
+  const { activityId } = req.params;
+
+  ActivitiesUser.find({ activity: activityId })
+    .populate('user')
+    .then((activitiesUsers) => {
+      const mappedUsers = activitiesUsers.map(activityUser => ({
+        id: activityUser.user.id,
+        name: activityUser.user.name,
+        age: getAgeByDate(activityUser.user.dateOfBirth),
+        gender: activityUser.user.gender,
+      }));
+      res.json({ success: true, data: { users: mappedUsers } });
+    })
+    .catch((err) => {
+      res.json({ success: false, err: err.message });
+    });
+};
+
+module.exports = {
+  add, findAll, findByName, getUsersByActivityId,
+};
