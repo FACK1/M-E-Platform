@@ -7,7 +7,16 @@ import {Title, StyledPage} from "./index.style";
 class CreateProgram extends Component {
 
   submitAction(values) {
-    axios.post('/programs', values);
+    return new Promise((resolve, reject) => {
+      axios.post('/programs', values)
+        .then(({ data }) => {
+          if(data.success){
+            resolve();
+          } else {
+            reject(data.err);
+          }
+        });
+    });
   }
 
   render() {

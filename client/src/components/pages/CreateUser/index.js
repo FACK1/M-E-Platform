@@ -5,9 +5,22 @@ import MainForm from '../../Form'
 import {Title, StyledPage} from "./index.style";
 
 class CreateUser extends Component {
+
   submitAction(values) {
-    axios.post('/users', values);
-    // TODO: Handle the response and make an action depending on success state.
+    return new Promise((resolve, reject) => {
+      axios.post('/users', values)
+        .then(({ data }) => {
+          if(data.success){
+            resolve();
+          } else {
+            console.log("Error happen, rejected");
+            reject(new Error(data.err));
+          }
+        }).catch((err) => {
+          console.log(err);
+          reject(err);
+      })
+    });
   }
 
   render() {
@@ -103,12 +116,21 @@ class CreateUser extends Component {
         placeholderText: "تاريخ الميلاد",
       },
     ];
+    const initialValues = {
+      name: '',
+      email: '',
+      type: 'admin',
+      living: 'city',
+      address: '',
+      gender: 'male',
+      phoneNo: '',
+    };
     return (
       <React.Fragment>
         <Header/>
         <StyledPage>
           <Title>إضافة مستخدم جديد </Title>
-          <MainForm fields={fields} action={this.submitAction} operationName="إضافة مستخدم جديد" />
+          <MainForm fields={fields} action={this.submitAction} operationName="إضافة مستخدم جديد" initialValues={initialValues} />
         </StyledPage>
         </React.Fragment>
     );
