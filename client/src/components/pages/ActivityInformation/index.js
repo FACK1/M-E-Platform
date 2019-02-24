@@ -17,8 +17,13 @@ class ActivityInformation extends Component {
      };
    }
 
+   dateParser = (date) => {
+     const isoDate = ((new Date(date).toLocaleString()).split(',')[0]).split('/');
+     return (isoDate[2] + '/' + isoDate[0] + '/' + isoDate[1]);
+   };
+
    generateUserWithDate = (user) => {
-     return `${user.name} - ${user.dateOfBirth}`;
+     return `${user.name} (${this.dateParser(user.dateOfBirth)})`;
    };
 
    checkSuggestionsClick = (inputValue) => {
@@ -32,7 +37,8 @@ class ActivityInformation extends Component {
    onChangeAction = ({ target: { value } }) => {
      this.setState({ userNameInput: value });
      if(value && !this.checkSuggestionsClick(value)){
-       axios.get(`/users/searchByName/${value}`)
+       const { id } = this.props.match.params;
+       axios.get(`/users/searchByName/${value}/${id}`)
        .then(({ data }) => {
          if (data.success) {
            this.setState({ suggestions: data.data });
@@ -56,6 +62,7 @@ class ActivityInformation extends Component {
        const { id } = this.props.match.params;
        this.addUserToActivity(this.state.userId, id);
      });
+     this.setState({ userNameInput: '' });
    };
 
    renderSuggestions = () => {
@@ -137,10 +144,19 @@ class ActivityInformation extends Component {
                  type="text"
                  name="userName"
                  placeholder="اكتب اسم الطالب"
+
                  onChange={this.onChangeAction} list="userNames"
                     />
                <button value="إضافة">اضافة</button>
                <datalist id="userNames"> {this.renderSuggestions()}</datalist>
+                onChange={this.onChangeAction}
+                 list="userNames"
+                 autocomplete="off"
+                 value={this.state.userNameInput}
+               />
+               <button>اضافة</button>
+               <datalist id="userNames"> {this.renderSuggestions()} </datalist>
+
            </form>
            <Table columns={columns} data={this.state.usersList}/>
          </StyledPage>
