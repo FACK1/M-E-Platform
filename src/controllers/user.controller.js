@@ -104,4 +104,4 @@ const getUsersByActivityId = (req, res) => {
     });
 };
 
-module.exports = { add, findAll, findByName,importFromExcel };
+module.exports = { add, findAll, findByName,importFromExcel ,getAgeByDate ,getUsersByActivityId };
