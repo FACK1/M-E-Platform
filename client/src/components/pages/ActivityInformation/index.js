@@ -13,6 +13,7 @@ import Table from '../../Table';
        suggestions: [],
        userId: null,
        userNameInput: '',
+       usersList: [],
      };
    }
 
@@ -77,6 +78,26 @@ import Table from '../../Table';
        });
    };
 
+   componentDidMount() {
+     this.getStudents();
+   }
+
+   getStudents = () => {
+     const { id } = this.props.match.params;
+     axios.get('/users/getUsersByActivityId/' + id)
+       .then(({ data }) => {
+         if(data.success){
+         // const usersList = data.data.users.map((u) => ({ id: u.id, name: u.name, age: u.age, gender: u.gender === 'male' ? 'ذكر' : 'أنثى' }));
+           const usersList = data.data.users.map((u) => ({ ...u, gender: u.gender === 'male' ? 'ذكر' : 'أنثى' }));
+           this.setState({ usersList: usersList });
+         } else {
+           alert("Server Error, cannot get users.\n Error: " + data.err);
+         }
+       }).catch((err) => {
+         alert("Problem with get users, check your internet connection.\n Error: " + err.message);
+     });
+   };
+
    render() {
      const { id } = this.props.match.params;
      const columns = [
@@ -116,7 +137,7 @@ import Table from '../../Table';
                <button value="إضافة">اضافة</button>
                <datalist id="userNames"> {this.renderSuggestions()} </datalist>
            </form>
-           <Table columns={columns} data={[]}/>
+           <Table columns={columns} data={this.state.usersList}/>
          </StyledPage>
        </React.Fragment>
 
