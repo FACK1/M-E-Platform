@@ -4,7 +4,6 @@ import {StyledPage, StyledActivityDetailsNav} from "./index.style";
 import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
 import Table from '../../Table';
-import CsvParse from '@vtex/react-csv-parse'
 
 class ActivityInformation extends Component {
 
@@ -78,18 +77,9 @@ class ActivityInformation extends Component {
        });
    };
 
-   handleData = data => {
-  this.setState({ data })
-  }
 
    render() {
-  const keys = [
-     "الاسم الثلاثي",
-     "الجنس",
-     "تاريخ الميلاد",
-     "العنوان",
-     "رقم الهاتف",
-  ]
+
      const { id } = this.props.match.params;
      const columns = [
        {
@@ -128,12 +118,6 @@ class ActivityInformation extends Component {
                  onChange={this.onChangeAction} list="userNames"
                     />
                <button value="إضافة">اضافة</button>
-               <CsvParse
-                keys={keys}
-                onDataUploaded={this.handleData}
-                onError={this.handleError}
-                render={onChange => <input type="file" onChange={onChange} />}
-                  />
                <datalist id="userNames"> {this.renderSuggestions()}</datalist>
            </form>
            <Table columns={columns} data={[]}/>
