@@ -12,7 +12,7 @@ const add = (req, res) => {
     .then(() => {
       res.json({ success: true });
     }).catch((err) => {
-      res.json({ success: false, error: err.message });
+      res.json({ success: false, err: err.message });
     });
 };
 

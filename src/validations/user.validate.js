@@ -4,9 +4,9 @@ const checkUserValidation = require('./validation');
 const validate = (req, res, next) => {
   Joi.validate(req.body, checkUserValidation, (err) => {
     if (err) {
-      res.json({ err });
+      const errMessage = err.details.reduce((str, errObj) => (`${str}\n${errObj.message}`), '\n');
+      res.json({ success: false, err: errMessage });
     } else {
-      res.json({ result: 'true' });
       next();
     }
   });
