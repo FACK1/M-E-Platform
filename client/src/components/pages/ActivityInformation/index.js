@@ -23,7 +23,7 @@ import Table from '../../Table';
    };
 
    generateUserWithDate = (user) => {
-     return `${user.name} - ${this.dateParser(user.dateOfBirth)}`;
+     return `${user.name} (${this.dateParser(user.dateOfBirth)})`;
    };
 
    checkSuggestionsClick = (inputValue) => {
