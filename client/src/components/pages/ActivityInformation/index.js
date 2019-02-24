@@ -17,8 +17,13 @@ import Table from '../../Table';
      };
    }
 
+   dateParser = (date) => {
+     const isoDate = ((new Date(date).toLocaleString()).split(',')[0]).split('/');
+     return (isoDate[2] + '/' + isoDate[0] + '/' + isoDate[1]);
+   };
+
    generateUserWithDate = (user) => {
-     return `${user.name} - ${user.dateOfBirth}`;
+     return `${user.name} - ${this.dateParser(user.dateOfBirth)}`;
    };
 
    checkSuggestionsClick = (inputValue) => {
