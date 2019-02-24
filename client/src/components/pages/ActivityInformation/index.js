@@ -32,7 +32,8 @@ import Table from '../../Table';
    onChangeAction = ({ target: { value } }) => {
      this.setState({ userNameInput: value });
      if(value && !this.checkSuggestionsClick(value)){
-       axios.get(`/users/searchByName/${value}`)
+       const { id } = this.props.match.params;
+       axios.get(`/users/searchByName/${value}/${id}`)
        .then(({ data }) => {
          if (data.success) {
            this.setState({ suggestions: data.data });
@@ -56,6 +57,7 @@ import Table from '../../Table';
        const { id } = this.props.match.params;
        this.addUserToActivity(this.state.userId, id);
      });
+     this.setState({ userNameInput: '' });
    };
 
    renderSuggestions = () => {
@@ -134,9 +136,12 @@ import Table from '../../Table';
                  type="text"
                  name="userName"
                  placeholder="اكتب اسم الطالب"
-                 onChange={this.onChangeAction} list="userNames"
+                 onChange={this.onChangeAction}
+                 list="userNames"
+                 autocomplete="off"
+                 value={this.state.userNameInput}
                />
-               <button value="إضافة">اضافة</button>
+               <button>اضافة</button>
                <datalist id="userNames"> {this.renderSuggestions()} </datalist>
            </form>
            <Table columns={columns} data={this.state.usersList}/>
