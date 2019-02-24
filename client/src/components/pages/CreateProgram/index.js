@@ -7,7 +7,16 @@ import {Title, StyledPage} from "./index.style";
 class CreateProgram extends Component {
 
   submitAction(values) {
-    axios.post('/programs', values);
+    return new Promise((resolve, reject) => {
+      axios.post('/programs', values)
+        .then(({ data }) => {
+          if(data.success){
+            resolve('تمت اضافة البرنامج بنجاح');
+          } else {
+            reject(new Error(data.err));
+          }
+        });
+    });
   }
 
   render() {
@@ -24,12 +33,13 @@ class CreateProgram extends Component {
         placeholder: "اسم المؤسسة",
       }
     ];
+    const initialValues = { name: '', organization: '' };
     return (
       <React.Fragment>
         <Header/>
         <StyledPage>
           <Title> انشئ برنامجا جديداً </Title>
-          <MainForm fields={fields} action={this.submitAction} operationName="  انشاء برنامجا جديداً" />
+          <MainForm fields={fields} action={this.submitAction} operationName="انشاء برنامجا جديداً" initialValues={initialValues} />
         </StyledPage>
         </React.Fragment>
     );
