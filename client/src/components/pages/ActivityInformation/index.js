@@ -70,6 +70,7 @@ import Table from '../../Table';
 
            if(data.success){
            alert("User Added successfully!");
+           this.getStudents();
          } else {
            alert(`Adding user to activity Error: ${data.err}`);
          }
