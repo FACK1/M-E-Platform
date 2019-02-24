@@ -56,9 +56,7 @@ const findAll = (req, res) => {
     });
 };
 
-const getAgeByDate = (date) => {
-  return (new Date()).getUTCFullYear() - date.getUTCFullYear();
-};
+const getAgeByDate = date => (new Date()).getUTCFullYear() - date.getUTCFullYear();
 
 const getUsersByActivityId = (req, res) => {
   const { activityId } = req.params;

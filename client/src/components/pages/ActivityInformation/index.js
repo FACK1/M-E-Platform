@@ -67,7 +67,8 @@ import Table from '../../Table';
    addUserToActivity = (userId, activityId) => {
      axios.post('/activities/addUserToActivity', { userId, activityId })
        .then(({ data }) => {
-         if(data.success){
+
+           if(data.success){
            alert("User Added successfully!");
          } else {
            alert(`Adding user to activity Error: ${data.err}`);
@@ -87,13 +88,13 @@ import Table from '../../Table';
      axios.get('/users/getUsersByActivityId/' + id)
        .then(({ data }) => {
          if(data.success){
-         // const usersList = data.data.users.map((u) => ({ id: u.id, name: u.name, age: u.age, gender: u.gender === 'male' ? 'ذكر' : 'أنثى' }));
            const usersList = data.data.users.map((u) => ({ ...u, gender: u.gender === 'male' ? 'ذكر' : 'أنثى' }));
            this.setState({ usersList: usersList });
          } else {
            alert("Server Error, cannot get users.\n Error: " + data.err);
          }
-       }).catch((err) => {
+       })
+       .catch((err) => {
          alert("Problem with get users, check your internet connection.\n Error: " + err.message);
      });
    };
