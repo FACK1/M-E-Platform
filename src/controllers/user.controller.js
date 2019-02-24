@@ -19,7 +19,7 @@ const add = (req, res) => {
 const findByName = (req, res) => {
   const { name, activityId } = req.params;
   User.find({ type: 'student', name: new RegExp(`^${name}`, 'i') }, 'id name dateOfBirth')
-    .exec((err, users) => new Promise((resolve, reject) => {
+    .exec((err, users) => {
       if (err) {
         res.json({
           success: false,
@@ -35,14 +35,14 @@ const findByName = (req, res) => {
               data: usersList,
             });
           })
-          .catch((err) => {
+          .catch((filterErr) => {
             res.json({
               success: false,
-              err: err.message,
+              err: filterErr.message,
             });
           });
       }
-    }));
+    });
 };
 
 const findAll = (req, res) => {
@@ -71,7 +71,6 @@ const getAgeByDate = date => (new Date()).getUTCFullYear() - date.getUTCFullYear
 
 const getUsersByActivityId = (req, res) => {
   const { activityId } = req.params;
-  console.log('hello!');
   ActivitiesUser.find({ activity: activityId })
     .populate('user')
     .then((activitiesUsers) => {
