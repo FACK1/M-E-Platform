@@ -23,6 +23,9 @@ router.get('/users/getUsersByActivityId/:activityId', controllers.user.getUsersB
 
 router.get('/objectives', controllers.objective.findAll);
 
+router.post('/auth/register', controllers.auth.register);
+router.post('/auth/login', controllers.auth.login);
+
 
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
