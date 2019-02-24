@@ -13,6 +13,7 @@ import Table from '../../Table';
        suggestions: [],
        userId: null,
        userNameInput: '',
+       usersList: [],
      };
    }
 
@@ -66,8 +67,10 @@ import Table from '../../Table';
    addUserToActivity = (userId, activityId) => {
      axios.post('/activities/addUserToActivity', { userId, activityId })
        .then(({ data }) => {
-         if(data.success){
+
+           if(data.success){
            alert("User Added successfully!");
+           this.getStudents();
          } else {
            alert(`Adding user to activity Error: ${data.err}`);
          }
@@ -75,6 +78,26 @@ import Table from '../../Table';
        .catch((err) => {
          alert(`Send request Error: ${err.message}`);
        });
+   };
+
+   componentDidMount() {
+     this.getStudents();
+   }
+
+   getStudents = () => {
+     const { id } = this.props.match.params;
+     axios.get('/users/getUsersByActivityId/' + id)
+       .then(({ data }) => {
+         if(data.success){
+           const usersList = data.data.users.map((u) => ({ ...u, gender: u.gender === 'male' ? 'ذكر' : 'أنثى' }));
+           this.setState({ usersList: usersList });
+         } else {
+           alert("Server Error, cannot get users.\n Error: " + data.err);
+         }
+       })
+       .catch((err) => {
+         alert("Problem with get users, check your internet connection.\n Error: " + err.message);
+     });
    };
 
    render() {
@@ -116,7 +139,7 @@ import Table from '../../Table';
                <button value="إضافة">اضافة</button>
                <datalist id="userNames"> {this.renderSuggestions()} </datalist>
            </form>
-           <Table columns={columns} data={[]}/>
+           <Table columns={columns} data={this.state.usersList}/>
          </StyledPage>
        </React.Fragment>
 

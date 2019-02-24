@@ -58,7 +58,7 @@ const findById = (req, res) => {
 
 const addUserToActivity = (req, res) => {
   const { userId, activityId } = req.body;
-  const activitiesUser = new ActivitiesUser({ userId, activityId });
+  const activitiesUser = new ActivitiesUser({ user: userId, activity: activityId });
   activitiesUser.save((err) => {
     if (err) {
       res.json({ success: false, err: err.message });
