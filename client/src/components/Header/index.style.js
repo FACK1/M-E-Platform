@@ -21,6 +21,7 @@ right:0;
 export const StyledLogo= styled.img`
 width:60%;
 align-self:center;
+margin: 20px 20% 20px 20%;
 `;
 export const StyledUl = styled.ul`
 margin: 0px 30% 0px 0px;
@@ -49,4 +50,8 @@ text-align: center;
 font-size: 1.5vw;
 border-radius: 20.5px;
 border:0px;
+`;
+
+export const ImgLink = styled(Link)`
+  width: 100%;
 `;
