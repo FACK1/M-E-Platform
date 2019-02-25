@@ -13,8 +13,8 @@ const Header = () =>{
             <StyledLi><StyledLink to="/ViewActivities">الأنشطة</StyledLink ></StyledLi>
             <StyledLi><StyledLink  to="/ViewPrograms">البرامج</StyledLink ></StyledLi>
             <StyledLi><StyledLink  to="/ViewUsers">المستخدمين</StyledLink ></StyledLi>
-            <StyledLi><StyledLink  to="/objectives">التقارير</StyledLink ></StyledLi>
-            <StyledLi><StyledLink  to="/Programs">الأهداف</StyledLink ></StyledLi>
+            <StyledLi><StyledLink  to="/">التقارير</StyledLink ></StyledLi>
+            <StyledLi><StyledLink  to="/">الأهداف</StyledLink ></StyledLi>
         </StyledUl>
         <StyledBgLogo src={bgLogo}/>
       </StyledHeader>
