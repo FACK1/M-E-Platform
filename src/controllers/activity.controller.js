@@ -76,7 +76,7 @@ const getActivitesByProgramId = (req, res) => {
         res.json({ success: false, err: err.message });
       } else {
         const activitiesPromises = activities.map(
-          activity => ActivitiesUser.count({ activityId: activity.id }).then((usersCount) => {
+          activity => ActivitiesUser.count({ activity: activity.id }).then((usersCount) => {
             const modifiedActivity = { id: activity.id, usersCount, name: activity.name };
             return modifiedActivity;
           }),
