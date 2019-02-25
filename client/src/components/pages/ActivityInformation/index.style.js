@@ -7,9 +7,9 @@ export const Title = styled.h1`
 `;
 
 export const StyledPage = styled.div`
-margin-right: 45%;
-margin-left: 5%;
-padding-top: 15vh;
+  margin-right: 45%;
+  margin-left: 2%;
+  padding-top: 15vh;
 `;
 
 export const StyledActivityDetailsNav = styled.div`
