@@ -9,3 +9,15 @@ YDRC manager is using excel sheets to track students, activities, programs, and 
 
 # Solution:
 Web application, that handle all of students, activities, programs, and objectives relations. So students will be added one time and then set it's relation to many activities. Also when create the new activity, will relate it to program and objective. That means when we show activity page, the students in it will be appeard.
+
+
+# Function requirements:
+The application is made for manager of the YDRC on this sprint, so he can:
+1. Add new students.
+2. Create new activity and relate it's objective and program.
+3. Create new program.
+4. Objectives will be added by database manager.
+6. View all of activities, programs and students lists.
+7. View one activity page which shows the students of it.
+8. View one program page, which shows activities init with number of stuents in each activity.
+9. On activity page, he/she is able to add/relate new students to the activity.
