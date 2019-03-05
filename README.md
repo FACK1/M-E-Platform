@@ -21,3 +21,11 @@ The application is made for manager of the YDRC on this sprint, so he can:
 7. View one activity page which shows the students of it.
 8. View one program page, which shows activities init with number of stuents in each activity.
 9. On activity page, he/she is able to add/relate new students to the activity.
+
+# Key technologies:
+- Back end: [React.js](https://reactjs.org/docs/getting-started.html)
+- Fornt end: [Express.js](https://expressjs.com/en/api.html)
+- Forntend routing: [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
+- Forms: [Formik](https://jaredpalmer.com/formik/docs/overview)
+- Tables: [React Table](https://github.com/tannerlinsley/react-table/tree/v6)
+- Date Plicker: [React DatePicker](https://reactdatepicker.com/)
