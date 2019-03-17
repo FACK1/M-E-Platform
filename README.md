@@ -23,8 +23,8 @@ The application is made for manager of the YDRC on this sprint, so he can:
 9. On activity page, he/she is able to add/relate new students to the activity.
 
 # Key technologies:
-- Back end: [React.js](https://reactjs.org/docs/getting-started.html)
-- Fornt end: [Express.js](https://expressjs.com/en/api.html)
+- Frontend: [React.js](https://reactjs.org/docs/getting-started.html)
+- Backend: [Express.js](https://expressjs.com/en/api.html)
 - Forntend routing: [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
 - Forms: [Formik](https://jaredpalmer.com/formik/docs/overview)
 - Tables: [React Table](https://github.com/tannerlinsley/react-table/tree/v6)
