@@ -16,6 +16,33 @@ const add = (req, res) => {
     });
 };
 
+const importFromExcel = (req, res) => {
+  var users=req.body.data;
+
+  users.shift();
+  users.pop();
+
+  users.forEach(function(user) {
+
+    const addUser = new User({
+        name:user[0],
+        type:user[1],
+        living:user[2],
+        address:user[3],
+        gender:user[4],
+        dateOfBirth:user[5],
+        phoneNo:user[6],
+        email:user[7],
+      });
+      addUser.save()
+        .then(() => {
+            res.json({ success: true });
+          }).catch((err) => {
+              res.json({ success: false, error: err.message });
+            });
+});
+};
+
 const findByName = (req, res) => {
   const { name, activityId } = req.params;
   User.find({ type: 'student', name: new RegExp(`^${name}`, 'i') }, 'id name dateOfBirth')
@@ -90,6 +117,4 @@ const getUsersByActivityId = (req, res) => {
     });
 };
 
-module.exports = {
-  add, findAll, findByName, getUsersByActivityId,
-};
+module.exports = { add, findAll, findByName,importFromExcel ,getAgeByDate ,getUsersByActivityId };

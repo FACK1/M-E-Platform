@@ -20,6 +20,7 @@ router.post('/users', validations.user, controllers.user.add);
 router.get('/users', controllers.user.findAll);
 router.get('/users/searchByName/:name/:activityId', controllers.user.findByName);
 router.get('/users/getUsersByActivityId/:activityId', controllers.user.getUsersByActivityId);
+router.post('/importFromExcel', controllers.user.importFromExcel);
 
 router.get('/objectives', controllers.objective.findAll);
 

@@ -4,7 +4,7 @@ import {	Link} from 'react-router-dom'
 import Header from "../../Header";
 import Table from "../../Table";
 import {	StyledPage,	StyledTilte} from "./index.style";
-
+import CSVReader from "react-csv-reader";
 
 class ViewUsers extends Component {
 	state = {
@@ -68,6 +68,10 @@ class ViewUsers extends Component {
 	}
 
 	render() {
+
+    const handleForce = data => {
+			axios.post('/importFromExcel', {data});
+   };
 		const columns = [
       {Header: 'id',accessor: 'id',show: false},
 			{Header: 'اسم الطالب',accessor: 'name'},
@@ -86,6 +90,9 @@ class ViewUsers extends Component {
 			<StyledPage>
 			<StyledTilte> جميع المستخدمين </StyledTilte>
 			<Link to = "/CreateUser"> إضافة مستخدم جديد </Link>
+			<CSVReader
+					 onFileLoaded={handleForce}
+				 />
       <Table columns = {columns} data = {this.state.result}/>
 			</StyledPage>
       </React.Fragment>

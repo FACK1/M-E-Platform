@@ -5,7 +5,7 @@ import Header from "../../Header";
 import ActivityDetails from "../../ActivityDetails"
 import Table from '../../Table';
 
- class ActivityInformation extends Component {
+class ActivityInformation extends Component {
 
    constructor(props) {
      super(props);
@@ -108,6 +108,7 @@ import Table from '../../Table';
    };
 
    render() {
+
      const { id } = this.props.match.params;
      const columns = [
        {
@@ -129,6 +130,8 @@ import Table from '../../Table';
        },
      ];
 
+
+
      return (
        <React.Fragment>
          <Header/>
@@ -141,13 +144,19 @@ import Table from '../../Table';
                  type="text"
                  name="userName"
                  placeholder="اكتب اسم الطالب"
-                 onChange={this.onChangeAction}
+
+                 onChange={this.onChangeAction} list="userNames"
+                    />
+               <button value="إضافة">اضافة</button>
+               <datalist id="userNames"> {this.renderSuggestions()}</datalist>
+                onChange={this.onChangeAction}
                  list="userNames"
                  autocomplete="off"
                  value={this.state.userNameInput}
                />
                <button>اضافة</button>
                <datalist id="userNames"> {this.renderSuggestions()} </datalist>
+
            </form>
            <Table columns={columns} data={this.state.usersList}/>
          </StyledPage>
